@@ -1,12 +1,11 @@
 #include <iostream>
 
-using namespace std;
-
 int	main()
 {
-	unsigned int a;
-	unsigned int b;
+	int a;
+	int b;
 
+	std::cout << "Введите a, b" << std::endl;
 	std::cin >> a >> b;
 	a = a + b;
 	b = a - b;

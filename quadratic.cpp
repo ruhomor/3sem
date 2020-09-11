@@ -1,39 +1,42 @@
 #include <cmath>
 #include <iostream>
+#include <complex>
 
-using namespace std;
+#define COMPLEX std::complex<double>
 
 int	main()
 {
-	double 	a, b, c, d;
+	COMPLEX a, b, c, d, r;
 
-	std::cout << "Введите a, b, c" << endl;
+	std::cout << "Введите a, b, c" << std::endl;
 	std::cin >> a >> b >> c;
-	if (a == 0)
+	if (real(a) == 0)
 	{
-		if (b == 0)
+		if (real(b) == 0)
 		{
-			if (c == 0)
-				std::cout << "Бесконечное кол-во решений" << endl;
+			if (real(c) == 0)
+				std::cout << "Бесконечное кол-во решений" << std::endl;
 			else
-				std::cout << "Нет решений" << endl;
+				std::cout << "Нет решений" << std::endl;
 		}
 		else
-			std::cout << -c / b << endl;
+			std::cout << -real(c) / real(b) << std::endl;
 	}
 	else
 	{
-		d = b * b - 4 * a * c;
-		if (d < 0)
-			std::cout << "Нет решений" << endl;
-		else
+		d = b * b - COMPLEX(4, 0) * a * c;
 		{
-			if (d == 0)
-				std::cout << "x = " << -b / (2 * a) << endl;
-			else
 			{
-				std::cout << "x1 = " << (-b + sqrt(d)) / (2 * a) << endl;
-				std::cout << "x2 = " << (-b - sqrt(d)) / (2 * a) << endl;
+				r = (-b + sqrt(d)) / (COMPLEX(2, 0) * a);
+				if (imag(r) == 0)
+					std::cout << "x1 = " << real(r) << std::endl;
+				else
+					std::cout << "x1 = " << real(r) << " + " << imag(r) << 'i' << std::endl;
+				r = (-b - sqrt(d)) / (COMPLEX(2, 0) * a);
+				if (imag(r) == 0)
+					std::cout << "x2 = " << real(r) << std::endl;
+				else
+					std::cout << "x2 = " << real(r) << " + " << imag(r) << 'i' << std::endl;
 			}
 		}
 	}

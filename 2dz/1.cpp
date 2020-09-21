@@ -6,11 +6,22 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/18 17:49:37 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/09/18 21:12:07 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/09/21 19:39:13 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "p.h"
+
+/*
+void	swap_rows(double **matrix, int i, int j)
+{
+	double	*tmp;
+
+	tmp = matrix[i];
+	matrix[i] = matrix[j];
+	matrix[j] = tmp;
+}
+*/
 
 void	display(double **matrix, int n, int m)
 {
@@ -22,6 +33,16 @@ void	display(double **matrix, int n, int m)
 	}
 }
 
+void	vec_display(std::vector < std::vector < double > > &vc, int n, int m)
+{
+	for (int i = 0; i < vc.size(); i++)
+	{
+		for (int j = 0; j < vc[i].size(); j++)
+            std::cout << vc[i][j] << " ";
+		std::cout << "\n";
+	}
+}
+
 void	inputm(double **matrix, int n, int m)
 {
 	for(int i = 0; i < n; i++)
@@ -29,7 +50,28 @@ void	inputm(double **matrix, int n, int m)
 			std::cin >> matrix[i][j];
 }
 
+void	vec_inputm(std::vector < std::vector < double > > &vc, int n, int m)
+{
+	double				a;
+
+	for(int i = 0; i < n; i++)
+	{
+		std::vector<double>	row;
+		for(int j = 0; j < m; j++)
+		{
+			std::cin >> a;
+			row.push_back(a);
+		}
+		vc.push_back(row);
+	}
+}
+
 void	divide_row(double *row, int m, float s)
+{
+	for(int i = 0; i < m; row[i] = row[i] / s, i++);
+}
+
+void	vec_divide_row(std::vector <double> &row, int m, float s)
 {
 	for(int i = 0; i < m; row[i] = row[i] / s, i++);
 }
@@ -37,6 +79,25 @@ void	divide_row(double *row, int m, float s)
 void	substract_row(double *row1, double *row2, int m, float k) //substracts row2 from row1
 {
 	for(int i = 0; i < m; row1[i] -= row2[i] * k, i++);
+}
+
+void	vec_substract_row(std::vector <double> &row1, std::vector <double> &row2, int m, float k) //substracts row2 from row1
+{
+	for(int i = 0; i < m; row1[i] -= row2[i] * k, i++);
+}
+
+void	vec_gauss(std::vector <std::vector <double> > &vc, int n, int m)
+{
+	for(int i = 0; i < vc.size(); i++)
+	{
+		vec_remove_zeros(vc, m);
+		if (vc[i][i] != 0)
+		{
+			vec_divide_row(vc[i], m, vc[i][i]);
+			for(int j = i; j + 1 < vc.size(); j++) //прямой ход
+				vec_substract_row(vc[j + 1], vc[i], m, vc[j + 1][i]);
+		}
+	}
 }
 
 void	gauss(double **matrix, int n, int m)
@@ -48,7 +109,37 @@ void	gauss(double **matrix, int n, int m)
 			divide_row(matrix[i], m, matrix[i][i]);
 			for(int j = i; j + 1 < n; j++) //прямой ход
 				substract_row(matrix[j + 1], matrix[i], m, matrix[j + 1][i]);
+		}
+	}
+}
 
+bool	vec_is_zerorow(std::vector <double> &row)
+{
+	for(int i = 0; i < row.size(); i++)
+		if (row[i] != 0)
+			return (0);
+	return (1);
+}
+
+void	vec_remove_zeros(std::vector< std::vector <double> > &vc, int m)
+{
+	for(int i = 0; i < vc.size(); i++)
+		if(vec_is_zerorow(vc[i]))
+		{
+			vc[i].clear();
+			vc.erase(vc.begin() + i);
+		}
+}
+
+void	vec_gauss_reverse(std::vector< std::vector <double> > &vc, int n, int m)
+{
+	for(int i = vc.size() - 1; i >= 0; i--)
+	{
+		if (vc[i][i] != 0)
+		{
+			vec_divide_row(vc[i], m, vc[i][i]);
+			for(int j = i; j - 1 >= 0; j--) //обратный ход
+				vec_substract_row(vc[j - 1], vc[i], m, vc[j - 1][i]);
 		}
 	}
 }
@@ -70,22 +161,30 @@ int		main()
 {
 	int			n, m;
 	double		**matrix;
+	std::vector<std::vector<double> > vc;
 
-	std::cout << "Введите n и m";
+	std::cout << "Введите n и m\n";
 	std::cin >> n >> m;
 	matrix = new double *[n]; //allocation
 
 	for(int i = 0; i < n; matrix[i] = new double [m], i++); //allocation
-	inputm(matrix, n, m);
+	//inputm(matrix, n, m);
+	vec_inputm(vc, n, m);
 	std::cout << "\n";
-	display(matrix, n, m);
+	//display(matrix, n, m);
+	vec_display(vc, n, m);
 	std::cout << "\n";
-	gauss(matrix, n, m);
-	display(matrix, n, m);
+	//gauss(matrix, n, m);
+	//display(matrix, n, m);
+	vec_gauss(vc, n, m);
+	vec_display(vc, n, m);
 	std::cout << "\n";
-	gauss_reverse(matrix, n, m);
-	display(matrix, n, m);
-	for(int i = 0; i < n; free(matrix[i]), i++); //free
-	free(matrix); //free
+	vec_gauss_reverse(vc, n, m);
+	vec_display(vc, n, m);
+	std::cout << "\n";
+	//gauss_reverse(matrix, n, m);
+	//display(matrix, n, m);
+	//for(int i = 0; i < n; free(matrix[i]), i++); //free
+	//free(matrix); //free
 	return (0);
 }

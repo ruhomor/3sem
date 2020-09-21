@@ -162,14 +162,21 @@ int		vec_first_nonzero(std::vector<double> &row)
 	return (distance(begin(row), find_if(begin(row), end(row), [] (double x) { return x != 0; })));
 }
 
+void	vec_fill_zeros(std::vector<double> &row, int zeros)
+{
+	for(;zeros--;row.push_back(0));
+}
+
 std::vector<std::vector<double> >	vec_fsr_plz(std::vector< std::vector <double> > &vc, int n, int m)
 {
-	std::vector<std::vector<double> > fsr;
+	std::vector<std::vector<double> >	fsr;
+	int									zeros;
 
 	for(int i = 0; i < vc.size(); i++)
 	{
 		std::vector<double> resh;
-
+		zeros = vec_first_nonzero(vc[i]);
+		vec_fill_zeros(resh, vec_first_nonzero(vc[i]));
 	}
 	return (fsr);
 }

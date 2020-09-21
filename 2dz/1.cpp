@@ -6,7 +6,7 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/18 17:49:37 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/09/21 19:39:13 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/09/21 22:17:17 by kachiote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,11 +157,29 @@ void	gauss_reverse(double **matrix, int n, int m)
 	}
 }
 
+int		vec_first_nonzero(std::vector<double> &row)
+{
+	return (distance(begin(row), find_if(begin(row), end(row), [] (double x) { return x != 0; })));
+}
+
+std::vector<std::vector<double> >	vec_fsr_plz(std::vector< std::vector <double> > &vc, int n, int m)
+{
+	std::vector<std::vector<double> > fsr;
+
+	for(int i = 0; i < vc.size(); i++)
+	{
+		std::vector<double> resh;
+
+	}
+	return (fsr);
+}
+
 int		main()
 {
 	int			n, m;
 	double		**matrix;
 	std::vector<std::vector<double> > vc;
+	std::vector<std::vector<double> > fsr;
 
 	std::cout << "Введите n и m\n";
 	std::cin >> n >> m;
@@ -182,6 +200,8 @@ int		main()
 	vec_gauss_reverse(vc, n, m);
 	vec_display(vc, n, m);
 	std::cout << "\n";
+	fsr = vec_fsr_plz(vc, n, m);
+	vec_display(fsr, n, m);
 	//gauss_reverse(matrix, n, m);
 	//display(matrix, n, m);
 	//for(int i = 0; i < n; free(matrix[i]), i++); //free

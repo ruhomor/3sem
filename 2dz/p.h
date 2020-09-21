@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   1.h                                                :+:      :+:    :+:   */
+/*   p.h                                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,6 +14,7 @@
 # define P_H
 
 # include <iostream>
+# include <algorithm>
 # include <vector>
 
 void	vec_remove_zeros(std::vector< std::vector <double> > &vc, int m);

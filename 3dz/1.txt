@@ -14,10 +14,11 @@
 void	f(int i) {};
 void	f(double d) {};
 1)
-void	f(int i, double d) {}; //сигнатуры совпадают всегда
+void	f(int i, double d) {};
 void	f(int d, double i) {};
 2)
-void	f(int i=0) {}; //вызов без аргументов
+void	f(int i=0) {};
 void	f(double d=0) {};
 3)
-??
+void	f(int i, ...) {};
+void	f(int i, double d, ...) {};

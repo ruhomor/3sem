@@ -26,11 +26,12 @@ all: $(OUT)
 
 clean:
 	@rm -f *.o
-	@make -C $(LIB) clean
+
+love:
+	@echo "not war"
 
 fclean: clean
 	@rm -f $(OUT)
-	@make -C $(LIB) fclean
 
 re: fclean all
 

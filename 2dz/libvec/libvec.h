@@ -16,6 +16,7 @@
 
 # include <vector>
 # include <iostream>
+# include <algorithm> //for std::max /useless
 # define TRUE 1
 # define FALSE 0
 

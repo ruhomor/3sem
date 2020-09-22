@@ -17,7 +17,6 @@ int		main(int argc, char **argv)
 {
 	std::vector<int>	vc;
 	int					len;
-	int					meme;
 
 	*argv++;
 	argc--;

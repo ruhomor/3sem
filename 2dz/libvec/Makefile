@@ -5,41 +5,41 @@
 #                                                     +:+ +:+         +:+      #
 #    By: kachiote <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/07/03 14:53:22 by kachiote          #+#    #+#              #
-#    Updated: 2020/09/16 13:12:11 by sslift           ###   ########.fr        #
+#    Created: 2019/09/09 21:02:57 by kachiote          #+#    #+#              #
+#    Updated: 2019/09/24 16:43:58 by kachiote         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = g++
 
-NAME = love
+NAME = libvec.a
 
-LIB = ./libvec
+FUNCS = vec_input \
+		vec_isin \
+		vec_display
 
-LDFLAGS = -L$(LIB) -lvec
+SRCS = $(patsubst %, %.c, $(FUNCS))
 
-CFILES = 1
+OUT = $(patsubst %, %.o, $(FUNCS))
 
-SRCS = $(wildcard *.cpp)
+INCL = ./
 
-INC = ./
+CXXFLAGS = -std=c++14 -Werror -Wextra -Wall
 
-OUT = $(SRCS:%.cpp=%)
+all: $(NAME)
 
-CXXFLAGS = -std=c++14# -Werror -Wextra -Wall
+%.o:%.cpp -I$(INCL)
+	@$(CXX) $(FLAGS) $(INCL) $< -o $@
 
-all: $(NAME) $(OUT)
-
-$(NAME):
-	@make -C $(LIB)
+$(NAME): $(OUT)
+	@ar rc $(NAME) $(OUT)
+	@ranlib $(NAME)
 
 clean:
-	@rm -f *.o
-	@make -C $(LIB) clean
+	@rm -f $(OUT)
 
 fclean: clean
-	@rm -f $(OUT)
-	@make -C $(LIB) fclean
+	@rm -f $(NAME)
 
 re: fclean all
 

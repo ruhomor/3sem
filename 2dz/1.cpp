@@ -32,7 +32,7 @@ void	display(double **matrix, int n, int m)
 		std::cout << "\n";
 	}
 }
-
+/*
 void	vec_display(std::vector < std::vector < double > > &vc, int n, int m, int sn, int sm)
 {
 	for (int i = sn; i < n; i++) //n is not vec.size() on purpose ок да
@@ -42,7 +42,7 @@ void	vec_display(std::vector < std::vector < double > > &vc, int n, int m, int s
 		std::cout << "\n";
 	}
 }
-
+*/
 void	inputm(double **matrix, int n, int m)
 {
 	for(int i = 0; i < n; i++)

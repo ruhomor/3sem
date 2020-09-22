@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   3.cpp                                              :+:      :+:    :+:   */
+/*   vec_isin.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: kachiote <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/22 12:30:58 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/09/22 12:48:24 by Ruslan           ###   ########.fr       */
+/*   Created: 2020/09/22 18:45:04 by kachiote          #+#    #+#             */
+/*   Updated: 2020/09/22 18:45:04 by kachiote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libvec/libvec.h"
+#include "libvec.h"
 
-bool	vec_isin(std::vector<int> &vc, int num) //бинпоиск здесь!
+bool	vec_isin(std::vector<int> &vc, int num)
 {
 	int		r = vc.size() - 1;
 	int		l = 0;
@@ -29,17 +29,4 @@ bool	vec_isin(std::vector<int> &vc, int num) //бинпоиск здесь!
 		return (1);
 	}
 	return (0);
-}
-
-int		main()
-{
-	std::vector<int>	vc;
-	int					num;
-
-	std::cout << "Введите число, которое необходимо найти: ";
-	std::cin >> num;
-	vec_input(vc);
-	std::cout << vec_isin(vc, num) << " ";
-	return (0);
-
 }

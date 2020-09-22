@@ -16,11 +16,11 @@
 # include <iostream>
 # include <algorithm>
 # include <vector>
+# include "libvec/libvec.h"
 
 void	vec_remove_zeros(std::vector< std::vector <double> > &vc, int m);
 void	display(double **matrix, int n, int m);
 void	inputm(double **matrix, int n, int m);
-void	vec_display(std::vector < std::vector < double > > &vc, int n, int m, int sn=0, int sm=0);
 void	vec_inputm(std::vector < std::vector < double > > &vc, int n, int m);
 void	divide_row(double *row, int m, float s);
 void	vec_divide_row(std::vector <double> &row, int m, float s);

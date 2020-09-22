@@ -6,7 +6,7 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 19:14:05 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/09/21 19:29:56 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/09/22 04:34:30 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 
 void	vec_remove_zeros(std::vector< std::vector <double> > &vc, int m);
 void	display(double **matrix, int n, int m);
-void	vec_display(std::vector < std::vector < double > > &vc, int n, int m);
 void	inputm(double **matrix, int n, int m);
+void	vec_display(std::vector < std::vector < double > > &vc, int n, int m, int sn=0, int sm=0);
 void	vec_inputm(std::vector < std::vector < double > > &vc, int n, int m);
 void	divide_row(double *row, int m, float s);
 void	vec_divide_row(std::vector <double> &row, int m, float s);

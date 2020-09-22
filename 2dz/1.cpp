@@ -6,7 +6,7 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/18 17:49:37 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/09/22 04:23:00 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/09/22 04:38:26 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ void	display(double **matrix, int n, int m)
 	}
 }
 
-void	vec_display(std::vector < std::vector < double > > &vc, int n, int m)
+void	vec_display(std::vector < std::vector < double > > &vc, int n, int m, int sn, int sm)
 {
-	for (int i = 0; i < vc.size(); i++)
+	for (int i = sn; i < n; i++) //n is not vec.size() on purpose ок да
 	{
-		for (int j = 0; j < vc[i].size(); j++)
+		for (int j = sm; j < m; j++) //tut tozhe m ne vec[i].size() on purpose
             std::cout << vc[i][j] << " ";
 		std::cout << "\n";
 	}
@@ -217,14 +217,15 @@ int		main()
 	//gauss(matrix, n, m);
 	//display(matrix, n, m);
 	vec_gauss(vc, n, m);
-	vec_display(vc, n, m);
+	vec_display(vc, vc.size(), m);
 	std::cout << "\n";
 	vec_gauss_reverse(vc, n, m);
-	vec_display(vc, n, m);
-	std::cout << "\n";
+	vec_display(vc, vc.size(), m);
+	std::cout << "\nФСР\n";
 	fsr = vec_solve_plz(vc, n, m);
 	vec_display(fsr, m - 1, m - vc.size() - 1);
-	std::cout << "\n";
+	std::cout << "\nЧАСТНОЕ РЕШЕНИЕ\n";
+	vec_display(fsr, m - 1, m - vc.size(), 0, vc.size());
 	//gauss_reverse(matrix, n, m);
 	//display(matrix, n, m);
 	//for(int i = 0; i < n; free(matrix[i]), i++); //free

@@ -18,8 +18,6 @@ LIB = ./libvec
 
 LDFLAGS = -L$(LIB) -lvec
 
-CFILES = 1
-
 SRCS = $(wildcard *.cpp)
 
 INC = ./

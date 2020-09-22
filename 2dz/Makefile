@@ -26,6 +26,9 @@ CXXFLAGS = -std=c++14# -Werror -Wextra -Wall
 
 all: $(OUT)
 
+$(NAME):
+	@echo "not war"
+
 clean:
 	@rm -f *.o
 

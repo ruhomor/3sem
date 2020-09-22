@@ -6,7 +6,7 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/18 17:49:37 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/09/21 22:17:17 by kachiote         ###   ########.fr       */
+/*   Updated: 2020/09/22 04:23:00 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,26 +167,41 @@ void	vec_fill_zeros(std::vector<double> &row, int zeros)
 	for(;zeros--;row.push_back(0));
 }
 
-std::vector<std::vector<double> >	vec_fsr_plz(std::vector< std::vector <double> > &vc, int n, int m)
+std::vector<std::vector<double> >	vec_solve_plz(std::vector< std::vector <double> > vc, int n, int m)
 {
-	std::vector<std::vector<double> >	fsr;
+	int									rang = vc.size();
+	std::vector<std::vector<double> >	fsr(m - 1, std::vector<double> (m - rang, 0));
+	//std::vector<std::vector<double> >	fsr(m, std::vector<double> (m - rang, 0));
 	int									zeros;
 
 	for(int i = 0; i < vc.size(); i++)
 	{
-		std::vector<double> resh;
 		zeros = vec_first_nonzero(vc[i]);
-		vec_fill_zeros(resh, vec_first_nonzero(vc[i]));
+		for(int j = zeros + 1; j < vc[i].size(); j++) //-1(b)
+			vc[i][j] = -vc[i][j];
 	}
+	for(int i = 0; i < m - rang; i++) ////-1(b) stolbiki
+		for(int j = 0; j < m - 1; j++) //-1(b)TODO make branchless //stroki
+		{
+			if(j < rang)
+				fsr[j][i] = vc[j][i + rang];
+			else
+			{
+				if(j == rang + i)
+					fsr[j][i] = 1;
+				else
+					fsr[j][i] = 0;
+			}
+		}
 	return (fsr);
 }
 
 int		main()
 {
-	int			n, m;
-	double		**matrix;
-	std::vector<std::vector<double> > vc;
-	std::vector<std::vector<double> > fsr;
+	int									n, m;
+	double								**matrix;
+	std::vector<std::vector<double> >	vc;
+	std::vector<std::vector<double> >	fsr;
 
 	std::cout << "Введите n и m\n";
 	std::cin >> n >> m;
@@ -207,8 +222,9 @@ int		main()
 	vec_gauss_reverse(vc, n, m);
 	vec_display(vc, n, m);
 	std::cout << "\n";
-	fsr = vec_fsr_plz(vc, n, m);
-	vec_display(fsr, n, m);
+	fsr = vec_solve_plz(vc, n, m);
+	vec_display(fsr, m - 1, m - vc.size() - 1);
+	std::cout << "\n";
 	//gauss_reverse(matrix, n, m);
 	//display(matrix, n, m);
 	//for(int i = 0; i < n; free(matrix[i]), i++); //free

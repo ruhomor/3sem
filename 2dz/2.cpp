@@ -6,7 +6,7 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 11:34:35 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/09/22 12:29:28 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/09/22 12:56:19 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ int		main(int argc, char **argv)
 	int					len;
 	int					meme;
 
-	while (--argc)
-		vc.push_back(atoi(*++argv));
+	*argv++;
+	argc--;
+	while (argc--)
+		vc.push_back(atoi(*argv++));
 	len = vc.size();
 	for(int i = 1; i < len; i++)
 		for (int j = i; (j > 0) && (vc[j - 1] > vc[j]); j--)

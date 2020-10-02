@@ -6,7 +6,7 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/02 22:00:28 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/10/02 22:44:51 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/10/03 02:37:32 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,47 +31,17 @@ class	node
 		//void	*data;
 		node_data	data;
 		char		type;
+		int			height;
 		node		*left;
 		node		*right;
-	node(int i)
-	{
-		data.i = i;
-		type = 'i';
-		left = NULL;
-		right = NULL;
-	}
-	node(char c)
-	{
-		data.c = c;
-		type = 'c';
-		left = NULL;
-		right = NULL;
-	}
-	node(double d)
-	{
-		data.d = d;
-		type = 'd';
-		left = NULL;
-		right = NULL;
-	}
-	~node(node *root) //рекуррентный деструктор для дерева
-	{
-		if (root)
-		{
-			delete root->left;
-			delete root->right;
-			delete root;
-		}
-	}
-	ostream& operator<<(ostream& os, const node& tree)
-	{
-		switch(tree.type)
-		{
-			case 'i':
-				os << tree.data.i <<
-		}
-		os << dt.mo << '/' << dt.da << '/' << dt.yr;
-		return os;
+
+	node(int i, int h = 0);
+	node(char c, int h = 0);
+	node(double d, int h = 0);
+
+	~node(); //рекуррентный деструктор для дерева
+
+	std::ostream& operator<<(std::ostream& os, const node& tree);
 	}
 }
 

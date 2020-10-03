@@ -6,12 +6,11 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 01:53:50 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/10/03 02:36:33 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/10/03 03:27:25 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bintree.h"
-
 
 node::node(int i, int h)
 {
@@ -71,7 +70,33 @@ std::ostream& node::operator<<(std::ostream& os, const node& tree)
 				break;
 		}
 	}
-	return os;
+	return (os);
+}
+
+std::istream& node::operator>>(std::istream& is, node& tree)
+{
+	if (!(tree.type)) //TODO set default value
+	{
+		std::cout << "whats data type? 'i' for int 'd' for double 'c' for char: ";
+		is >> tree.type;
+	}
+	switch(tree.type)
+	{
+		case 'i':
+			is >> tree.data.i;
+			break;
+		case 'd':
+			is >> tree.data.d;
+			break;
+		case 'c':
+			is >> tree.data.c;
+			break;
+		default:
+			std::cout << "whats data type? 'i' for int 'd' for double 'c' for char: ";
+			is >> tree.type;
+			break;
+	}
+	return (is);
 }
 
 int		main()

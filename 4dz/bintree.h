@@ -6,7 +6,7 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/02 22:00:28 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/10/03 02:37:32 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/10/03 03:36:09 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ class	node
 	~node(); //рекуррентный деструктор для дерева
 
 	std::ostream& operator<<(std::ostream& os, const node& tree);
+	std::istream& operator>>(std::istream& is, node& tree);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 01:53:50 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/10/03 03:27:25 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/10/03 16:16:09 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@ node::node(int i, int h)
 	data.i = i;
 	type = 'i';
 	height = h;
+	left = NULL;
+	right = NULL;
+}
+
+node::node()
+{
 	left = NULL;
 	right = NULL;
 }
@@ -45,26 +51,26 @@ node::~node() //рекуррентный деструктор для дерев�
 	delete right;
 }
 
-std::ostream& node::operator<<(std::ostream& os, const node& tree)
+std::ostream& node::operator<<(std::ostream& os, const node *tree)
 {
 	if (tree)
 	{
-		switch(tree.type)
+		switch(tree->type)
 		{
 			case 'i':
-				os << tree.data.i;
-				os << tree.left;
-				os << tree.right;
+				os << tree->data.i;
+				os << tree->left;
+				os << tree->right;
 				break;
 			case 'd':
-				os << tree.data.d;
-				os << tree.left;
-				os << tree.right;
+				os << tree->data.d;
+				os << tree->left;
+				os << tree->right;
 				break;
 			case 'c':
-				os << tree.data.c;
-				os << tree.left;
-				os << tree.right;
+				os << tree->data.c;
+				os << tree->left;
+				os << tree->right;
 				break;
 			default:
 				break;
@@ -101,6 +107,9 @@ std::istream& node::operator>>(std::istream& is, node& tree)
 
 int		main()
 {
+	node	tree;
 
+	std::cin >> tree >> tree.left >> tree.right;
+	std::cout << &tree;
 	return (0);
 }

@@ -6,110 +6,103 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 01:53:50 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/10/03 16:16:09 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/10/04 05:16:52 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bintree.h"
 
-node::node(int i, int h)
+Node::Node(std::any i, int h, char t)
 {
-	data.i = i;
-	type = 'i';
+	data = i;
 	height = h;
+	type = t;
 	left = NULL;
 	right = NULL;
 }
 
-node::node()
+Node::Node()
 {
 	left = NULL;
 	right = NULL;
 }
 
-node::node(char c, int h)
-{
-	data.c = c;
-	type = 'c';
-	height = h;
-	left = NULL;
-	right = NULL;
-}
-
-node::node(double d, int h)
-{
-	data.d = d;
-	type = 'd';
-	height = h;
-	left = NULL;
-	right = NULL;
-}
-
-node::~node() //рекуррентный деструктор для дерева
+Node::~Node() //рекуррентный деструктор для дерева
 {
 	delete left;
 	delete right;
 }
 
-std::ostream& node::operator<<(std::ostream& os, const node *tree)
+std::ostream& operator<<(std::ostream& os, const Node *tree)
 {
 	if (tree)
 	{
 		switch(tree->type)
 		{
-			case 'i':
-				os << tree->data.i;
-				os << tree->left;
-				os << tree->right;
+			case 'c':
+				os << std::any_cast<char>tree->data << ' ';
 				break;
 			case 'd':
-				os << tree->data.d;
-				os << tree->left;
-				os << tree->right;
+				os << std::any_cast<double>tree->data << ' ';
 				break;
-			case 'c':
-				os << tree->data.c;
-				os << tree->left;
-				os << tree->right;
-				break;
-			default:
+			case 'i':
+				os << std::any_cast<int>tree->data << ' ';
 				break;
 		}
+		os << tree->left << ' ';
+		os << tree->right << ' ';
 	}
 	return (os);
 }
 
-std::istream& node::operator>>(std::istream& is, node& tree)
+std::istream& operator>>(std::istream& is, Node *tree)
 {
-	if (!(tree.type)) //TODO set default value
+	switch(tree->type)
 	{
-		std::cout << "whats data type? 'i' for int 'd' for double 'c' for char: ";
-		is >> tree.type;
-	}
-	switch(tree.type)
-	{
+		case 'c':
+			is >> std::any_cast<char>tree->data;
+			break;
 		case 'i':
-			is >> tree.data.i;
+			is >> std::any_cast<int>tree->data;
 			break;
 		case 'd':
-			is >> tree.data.d;
-			break;
-		case 'c':
-			is >> tree.data.c;
-			break;
-		default:
-			std::cout << "whats data type? 'i' for int 'd' for double 'c' for char: ";
-			is >> tree.type;
+			is >> std::any_cast<double>tree->data;
 			break;
 	}
 	return (is);
 }
 
+void* operator new(size_t size, Node& tree, std::any data)
+{
+	Node	*node;
+
+	node = (Node*)malloc(size);
+	if (node != NULL)
+	{
+		switch(tree.type)
+		{
+			case 'c':
+				node->data = std::any_cast<char>data;
+				break;
+			case 'i':
+				node->data = std::any_cast<int>data;
+				break;
+			case 'd':
+				node->data = std::any_cast<double>data;
+				break;
+		}
+	}
+	return (node);
+}
+
 int		main()
 {
-	node	tree;
+	Node	tree;
 
-	std::cin >> tree >> tree.left >> tree.right;
+	tree.left = new Node;
+	tree.right = new Node;
+	std::cin >> &tree >> tree.left >> tree.right;
+	std::cin >> &tree >> tree.left >> tree.right;
 	std::cout << &tree;
 	return (0);
 }

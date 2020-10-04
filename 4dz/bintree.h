@@ -6,7 +6,7 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/02 22:00:28 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/10/03 16:16:51 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/10/04 04:40:33 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,11 @@
 
 # include <iostream>
 # include <stdlib.h>
+//# include <variant>
+# include <any>
 
+//# define NODE_DATA std::variant<void*, char, int, float, double>
+/*
 union	node_data //я не знаю как это сделать нормально
 {
 	void	*ptr;
@@ -24,26 +28,28 @@ union	node_data //я не знаю как это сделать нормальн
 	double	d;
 	char	c;
 };
-
-class	node
+*/
+class	Node
 {
 	public:
-		//void	*data;
-		node_data	data;
+//		void											*data;
+//		node_data										data;
+		//NODE_DATA	data;
+		std::any	data;
 		char		type;
 		int			height;
-		node		*left;
-		node		*right;
+		Node		*left;
+		Node		*right;
 
-	node();
-	node(int i, int h = 0);
-	node(char c, int h = 0);
-	node(double d, int h = 0);
+	Node();
+	Node(std::any = 0, int = 0, char = 0);
 
-	~node(); //рекуррентный деструктор для дерева
+	~Node(); //рекуррентный деструктор для дерева
 
-	std::ostream& operator<<(std::ostream& os, const node *tree);
-	std::istream& operator>>(std::istream& is, node& tree);
+	//setheights();
+	friend std::ostream& operator <<(std::ostream& os, const Node *tree);
+	friend std::istream& operator >>(std::istream& is, Node *tree);
+	friend void* operator new(size_t size, Node& tree, std::any data);
 };
 
 #endif

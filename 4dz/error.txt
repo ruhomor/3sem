@@ -1,0 +1,304 @@
+bintree.cpp:63:7: error: invalid operands to binary expression ('std::istream' (aka 'basic_istream<char>') and 'std::any')
+                        is >> tree->data;
+                        ~~ ^  ~~~~~~~~~~
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/type_traits:4861:3: note: candidate function template not viable: no known conversion from 'std::istream' (aka 'basic_istream<char>') to 'std::byte' for 1st argument
+  operator>> (byte  __lhs, _Integer __shift) noexcept
+  ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:221:20: note: candidate function not viable: no known conversion from 'std::any' to 'std::__1::basic_istream<char> &(*)(std::__1::basic_istream<char> &)' for 1st argument
+    basic_istream& operator>>(basic_istream& (*__pf)(basic_istream&))
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:225:20: note: candidate function not viable: no known conversion from 'std::any' to 'basic_ios<std::__1::basic_istream<char, std::__1::char_traits<char> >::char_type, std::__1::basic_istream<char, std::__1::char_traits<char> >::traits_type> &(*)(basic_ios<std::__1::basic_istream<char, std::__1::char_traits<char> >::char_type, std::__1::basic_istream<char, std::__1::char_traits<char> >::traits_type> &)' (aka 'basic_ios<char, std::__1::char_traits<char> > &(*)(basic_ios<char, std::__1::char_traits<char> > &)') for 1st argument
+    basic_istream& operator>>(basic_ios<char_type, traits_type>&
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:230:20: note: candidate function not viable: no known conversion from 'std::any' to 'std::__1::ios_base &(*)(std::__1::ios_base &)' for 1st argument
+    basic_istream& operator>>(ios_base& (*__pf)(ios_base&))
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:233:20: note: candidate function not viable: no known conversion from 'std::any' to 'basic_streambuf<std::__1::basic_istream<char, std::__1::char_traits<char> >::char_type, std::__1::basic_istream<char, std::__1::char_traits<char> >::traits_type> *' (aka 'basic_streambuf<char, std::__1::char_traits<char> > *') for 1st argument
+    basic_istream& operator>>(basic_streambuf<char_type, traits_type>* __sb);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:234:20: note: candidate function not viable: no known conversion from 'std::any' to 'bool &' for 1st argument
+    basic_istream& operator>>(bool& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:235:20: note: candidate function not viable: no known conversion from 'std::any' to 'short &' for 1st argument
+    basic_istream& operator>>(short& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:236:20: note: candidate function not viable: no known conversion from 'std::any' to 'unsigned short &' for 1st argument
+    basic_istream& operator>>(unsigned short& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:237:20: note: candidate function not viable: no known conversion from 'std::any' to 'int &' for 1st argument
+    basic_istream& operator>>(int& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:238:20: note: candidate function not viable: no known conversion from 'std::any' to 'unsigned int &' for 1st argument
+    basic_istream& operator>>(unsigned int& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:239:20: note: candidate function not viable: no known conversion from 'std::any' to 'long &' for 1st argument
+    basic_istream& operator>>(long& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:240:20: note: candidate function not viable: no known conversion from 'std::any' to 'unsigned long &' for 1st argument
+    basic_istream& operator>>(unsigned long& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:241:20: note: candidate function not viable: no known conversion from 'std::any' to 'long long &' for 1st argument
+    basic_istream& operator>>(long long& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:242:20: note: candidate function not viable: no known conversion from 'std::any' to 'unsigned long long &' for 1st argument
+    basic_istream& operator>>(unsigned long long& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:243:20: note: candidate function not viable: no known conversion from 'std::any' to 'float &' for 1st argument
+    basic_istream& operator>>(float& __f);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:244:20: note: candidate function not viable: no known conversion from 'std::any' to 'double &' for 1st argument
+    basic_istream& operator>>(double& __f);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:245:20: note: candidate function not viable: no known conversion from 'std::any' to 'long double &' for 1st argument
+    basic_istream& operator>>(long double& __f);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:246:20: note: candidate function not viable: no known conversion from 'std::any' to 'void *&' for 1st argument
+    basic_istream& operator>>(void*& __p);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:627:1: note: candidate function template not viable: no known conversion from 'std::any' to 'unsigned char *' for 2nd argument
+operator>>(basic_istream<char, _Traits>& __is, unsigned char* __s)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:635:1: note: candidate function template not viable: no known conversion from 'std::any' to 'signed char *' for 2nd argument
+operator>>(basic_istream<char, _Traits>& __is, signed char* __s)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:679:1: note: candidate function template not viable: no known conversion from 'std::any' to 'unsigned char &' for 2nd argument
+operator>>(basic_istream<char, _Traits>& __is, unsigned char& __c)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:687:1: note: candidate function template not viable: no known conversion from 'std::any' to 'signed char &' for 2nd argument
+operator>>(basic_istream<char, _Traits>& __is, signed char& __c)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:1385:1: note: candidate function [with _CharT = char, _Traits = std::__1::char_traits<char>, _Tp = std::__1::any &] not viable: no known conversion from 'std::istream' (aka 'basic_istream<char>') to 'basic_istream<char, std::__1::char_traits<char> > &&' for 1st argument
+operator>>(basic_istream<_CharT, _Traits>&& __is, _Tp&& __x)
+^
+bintree.cpp:58:15: note: candidate function not viable: no known conversion from 'std::any' to 'Node *' for 2nd argument
+std::istream& operator>>(std::istream& is, Node *tree)
+              ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:644:1: note: candidate template ignored: deduced conflicting types for parameter '_CharT' ('char' vs. 'std::__1::any')
+operator>>(basic_istream<_CharT, _Traits>& __is, _CharT& __c)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:616:1: note: candidate template ignored: could not match '_CharT *' against 'std::any'
+operator>>(basic_istream<_CharT, _Traits>& __is, _CharT* __s)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:1453:1: note: candidate template ignored: could not match 'basic_string<type-parameter-0-0, type-parameter-0-1, type-parameter-0-2>' against 'std::__1::any'
+operator>>(basic_istream<_CharT, _Traits>& __is,
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:1593:1: note: candidate template ignored: could not match 'bitset<_Size>' against 'std::__1::any'
+operator>>(basic_istream<_CharT, _Traits>& __is, bitset<_Size>& __x)
+^
+bintree.cpp:66:7: error: invalid operands to binary expression ('std::istream' (aka 'basic_istream<char>') and 'std::any')
+                        is >> tree->data;
+                        ~~ ^  ~~~~~~~~~~
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/type_traits:4861:3: note: candidate function template not viable: no known conversion from 'std::istream' (aka 'basic_istream<char>') to 'std::byte' for 1st argument
+  operator>> (byte  __lhs, _Integer __shift) noexcept
+  ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:221:20: note: candidate function not viable: no known conversion from 'std::any' to 'std::__1::basic_istream<char> &(*)(std::__1::basic_istream<char> &)' for 1st argument
+    basic_istream& operator>>(basic_istream& (*__pf)(basic_istream&))
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:225:20: note: candidate function not viable: no known conversion from 'std::any' to 'basic_ios<std::__1::basic_istream<char, std::__1::char_traits<char> >::char_type, std::__1::basic_istream<char, std::__1::char_traits<char> >::traits_type> &(*)(basic_ios<std::__1::basic_istream<char, std::__1::char_traits<char> >::char_type, std::__1::basic_istream<char, std::__1::char_traits<char> >::traits_type> &)' (aka 'basic_ios<char, std::__1::char_traits<char> > &(*)(basic_ios<char, std::__1::char_traits<char> > &)') for 1st argument
+    basic_istream& operator>>(basic_ios<char_type, traits_type>&
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:230:20: note: candidate function not viable: no known conversion from 'std::any' to 'std::__1::ios_base &(*)(std::__1::ios_base &)' for 1st argument
+    basic_istream& operator>>(ios_base& (*__pf)(ios_base&))
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:233:20: note: candidate function not viable: no known conversion from 'std::any' to 'basic_streambuf<std::__1::basic_istream<char, std::__1::char_traits<char> >::char_type, std::__1::basic_istream<char, std::__1::char_traits<char> >::traits_type> *' (aka 'basic_streambuf<char, std::__1::char_traits<char> > *') for 1st argument
+    basic_istream& operator>>(basic_streambuf<char_type, traits_type>* __sb);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:234:20: note: candidate function not viable: no known conversion from 'std::any' to 'bool &' for 1st argument
+    basic_istream& operator>>(bool& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:235:20: note: candidate function not viable: no known conversion from 'std::any' to 'short &' for 1st argument
+    basic_istream& operator>>(short& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:236:20: note: candidate function not viable: no known conversion from 'std::any' to 'unsigned short &' for 1st argument
+    basic_istream& operator>>(unsigned short& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:237:20: note: candidate function not viable: no known conversion from 'std::any' to 'int &' for 1st argument
+    basic_istream& operator>>(int& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:238:20: note: candidate function not viable: no known conversion from 'std::any' to 'unsigned int &' for 1st argument
+    basic_istream& operator>>(unsigned int& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:239:20: note: candidate function not viable: no known conversion from 'std::any' to 'long &' for 1st argument
+    basic_istream& operator>>(long& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:240:20: note: candidate function not viable: no known conversion from 'std::any' to 'unsigned long &' for 1st argument
+    basic_istream& operator>>(unsigned long& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:241:20: note: candidate function not viable: no known conversion from 'std::any' to 'long long &' for 1st argument
+    basic_istream& operator>>(long long& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:242:20: note: candidate function not viable: no known conversion from 'std::any' to 'unsigned long long &' for 1st argument
+    basic_istream& operator>>(unsigned long long& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:243:20: note: candidate function not viable: no known conversion from 'std::any' to 'float &' for 1st argument
+    basic_istream& operator>>(float& __f);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:244:20: note: candidate function not viable: no known conversion from 'std::any' to 'double &' for 1st argument
+    basic_istream& operator>>(double& __f);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:245:20: note: candidate function not viable: no known conversion from 'std::any' to 'long double &' for 1st argument
+    basic_istream& operator>>(long double& __f);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:246:20: note: candidate function not viable: no known conversion from 'std::any' to 'void *&' for 1st argument
+    basic_istream& operator>>(void*& __p);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:627:1: note: candidate function template not viable: no known conversion from 'std::any' to 'unsigned char *' for 2nd argument
+operator>>(basic_istream<char, _Traits>& __is, unsigned char* __s)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:635:1: note: candidate function template not viable: no known conversion from 'std::any' to 'signed char *' for 2nd argument
+operator>>(basic_istream<char, _Traits>& __is, signed char* __s)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:679:1: note: candidate function template not viable: no known conversion from 'std::any' to 'unsigned char &' for 2nd argument
+operator>>(basic_istream<char, _Traits>& __is, unsigned char& __c)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:687:1: note: candidate function template not viable: no known conversion from 'std::any' to 'signed char &' for 2nd argument
+operator>>(basic_istream<char, _Traits>& __is, signed char& __c)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:1385:1: note: candidate function [with _CharT = char, _Traits = std::__1::char_traits<char>, _Tp = std::__1::any &] not viable: no known conversion from 'std::istream' (aka 'basic_istream<char>') to 'basic_istream<char, std::__1::char_traits<char> > &&' for 1st argument
+operator>>(basic_istream<_CharT, _Traits>&& __is, _Tp&& __x)
+^
+bintree.cpp:58:15: note: candidate function not viable: no known conversion from 'std::any' to 'Node *' for 2nd argument
+std::istream& operator>>(std::istream& is, Node *tree)
+              ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:644:1: note: candidate template ignored: deduced conflicting types for parameter '_CharT' ('char' vs. 'std::__1::any')
+operator>>(basic_istream<_CharT, _Traits>& __is, _CharT& __c)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:616:1: note: candidate template ignored: could not match '_CharT *' against 'std::any'
+operator>>(basic_istream<_CharT, _Traits>& __is, _CharT* __s)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:1453:1: note: candidate template ignored: could not match 'basic_string<type-parameter-0-0, type-parameter-0-1, type-parameter-0-2>' against 'std::__1::any'
+operator>>(basic_istream<_CharT, _Traits>& __is,
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:1593:1: note: candidate template ignored: could not match 'bitset<_Size>' against 'std::__1::any'
+operator>>(basic_istream<_CharT, _Traits>& __is, bitset<_Size>& __x)
+^
+bintree.cpp:69:7: error: invalid operands to binary expression ('std::istream' (aka 'basic_istream<char>') and 'std::any')
+                        is >> tree->data;
+                        ~~ ^  ~~~~~~~~~~
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/type_traits:4861:3: note: candidate function template not viable: no known conversion from 'std::istream' (aka 'basic_istream<char>') to 'std::byte' for 1st argument
+  operator>> (byte  __lhs, _Integer __shift) noexcept
+  ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:221:20: note: candidate function not viable: no known conversion from 'std::any' to 'std::__1::basic_istream<char> &(*)(std::__1::basic_istream<char> &)' for 1st argument
+    basic_istream& operator>>(basic_istream& (*__pf)(basic_istream&))
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:225:20: note: candidate function not viable: no known conversion from 'std::any' to 'basic_ios<std::__1::basic_istream<char, std::__1::char_traits<char> >::char_type, std::__1::basic_istream<char, std::__1::char_traits<char> >::traits_type> &(*)(basic_ios<std::__1::basic_istream<char, std::__1::char_traits<char> >::char_type, std::__1::basic_istream<char, std::__1::char_traits<char> >::traits_type> &)' (aka 'basic_ios<char, std::__1::char_traits<char> > &(*)(basic_ios<char, std::__1::char_traits<char> > &)') for 1st argument
+    basic_istream& operator>>(basic_ios<char_type, traits_type>&
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:230:20: note: candidate function not viable: no known conversion from 'std::any' to 'std::__1::ios_base &(*)(std::__1::ios_base &)' for 1st argument
+    basic_istream& operator>>(ios_base& (*__pf)(ios_base&))
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:233:20: note: candidate function not viable: no known conversion from 'std::any' to 'basic_streambuf<std::__1::basic_istream<char, std::__1::char_traits<char> >::char_type, std::__1::basic_istream<char, std::__1::char_traits<char> >::traits_type> *' (aka 'basic_streambuf<char, std::__1::char_traits<char> > *') for 1st argument
+    basic_istream& operator>>(basic_streambuf<char_type, traits_type>* __sb);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:234:20: note: candidate function not viable: no known conversion from 'std::any' to 'bool &' for 1st argument
+    basic_istream& operator>>(bool& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:235:20: note: candidate function not viable: no known conversion from 'std::any' to 'short &' for 1st argument
+    basic_istream& operator>>(short& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:236:20: note: candidate function not viable: no known conversion from 'std::any' to 'unsigned short &' for 1st argument
+    basic_istream& operator>>(unsigned short& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:237:20: note: candidate function not viable: no known conversion from 'std::any' to 'int &' for 1st argument
+    basic_istream& operator>>(int& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:238:20: note: candidate function not viable: no known conversion from 'std::any' to 'unsigned int &' for 1st argument
+    basic_istream& operator>>(unsigned int& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:239:20: note: candidate function not viable: no known conversion from 'std::any' to 'long &' for 1st argument
+    basic_istream& operator>>(long& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:240:20: note: candidate function not viable: no known conversion from 'std::any' to 'unsigned long &' for 1st argument
+    basic_istream& operator>>(unsigned long& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:241:20: note: candidate function not viable: no known conversion from 'std::any' to 'long long &' for 1st argument
+    basic_istream& operator>>(long long& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:242:20: note: candidate function not viable: no known conversion from 'std::any' to 'unsigned long long &' for 1st argument
+    basic_istream& operator>>(unsigned long long& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:243:20: note: candidate function not viable: no known conversion from 'std::any' to 'float &' for 1st argument
+    basic_istream& operator>>(float& __f);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:244:20: note: candidate function not viable: no known conversion from 'std::any' to 'double &' for 1st argument
+    basic_istream& operator>>(double& __f);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:245:20: note: candidate function not viable: no known conversion from 'std::any' to 'long double &' for 1st argument
+    basic_istream& operator>>(long double& __f);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:246:20: note: candidate function not viable: no known conversion from 'std::any' to 'void *&' for 1st argument
+    basic_istream& operator>>(void*& __p);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:627:1: note: candidate function template not viable: no known conversion from 'std::any' to 'unsigned char *' for 2nd argument
+operator>>(basic_istream<char, _Traits>& __is, unsigned char* __s)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:635:1: note: candidate function template not viable: no known conversion from 'std::any' to 'signed char *' for 2nd argument
+operator>>(basic_istream<char, _Traits>& __is, signed char* __s)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:679:1: note: candidate function template not viable: no known conversion from 'std::any' to 'unsigned char &' for 2nd argument
+operator>>(basic_istream<char, _Traits>& __is, unsigned char& __c)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:687:1: note: candidate function template not viable: no known conversion from 'std::any' to 'signed char &' for 2nd argument
+operator>>(basic_istream<char, _Traits>& __is, signed char& __c)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:1385:1: note: candidate function [with _CharT = char, _Traits = std::__1::char_traits<char>, _Tp = std::__1::any &] not viable: no known conversion from 'std::istream' (aka 'basic_istream<char>') to 'basic_istream<char, std::__1::char_traits<char> > &&' for 1st argument
+operator>>(basic_istream<_CharT, _Traits>&& __is, _Tp&& __x)
+^
+bintree.cpp:58:15: note: candidate function not viable: no known conversion from 'std::any' to 'Node *' for 2nd argument
+std::istream& operator>>(std::istream& is, Node *tree)
+              ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:644:1: note: candidate template ignored: deduced conflicting types for parameter '_CharT' ('char' vs. 'std::__1::any')
+operator>>(basic_istream<_CharT, _Traits>& __is, _CharT& __c)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:616:1: note: candidate template ignored: could not match '_CharT *' against 'std::any'
+operator>>(basic_istream<_CharT, _Traits>& __is, _CharT* __s)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:1453:1: note: candidate template ignored: could not match 'basic_string<type-parameter-0-0, type-parameter-0-1, type-parameter-0-2>' against 'std::__1::any'
+operator>>(basic_istream<_CharT, _Traits>& __is,
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/istream:1593:1: note: candidate template ignored: could not match 'bitset<_Size>' against 'std::__1::any'
+operator>>(basic_istream<_CharT, _Traits>& __is, bitset<_Size>& __x)
+^
+bintree.cpp:102:14: error: no matching function for call to 'operator new'
+        tree.left = new(tree) Node;
+                    ^  ~~~~~~
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/new:206:70: note: candidate function not viable: no known conversion from 'Node' to 'void *' for 2nd argument; take the address of the argument with &
+_LIBCPP_NODISCARD_AFTER_CXX17 inline _LIBCPP_INLINE_VISIBILITY void* operator new  (std::size_t, void* __p) _NOEXCEPT {return __p;}
+                                                                     ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/new:173:66: note: candidate function not viable: no known conversion from 'Node' to 'const std::nothrow_t' for 2nd argument
+_LIBCPP_NODISCARD_AFTER_CXX17 _LIBCPP_OVERRIDABLE_FUNC_VIS void* operator new(std::size_t __sz, const std::nothrow_t&) _NOEXCEPT _NOALIAS;
+                                                                 ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/new:189:66: note: candidate function not viable: no known conversion from 'Node' to 'std::align_val_t' for 2nd argument
+_LIBCPP_NODISCARD_AFTER_CXX17 _LIBCPP_OVERRIDABLE_FUNC_VIS void* operator new(std::size_t __sz, std::align_val_t) _THROW_BAD_ALLOC;
+                                                                 ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/new:172:66: note: candidate function not viable: requires single argument '__sz', but 2 arguments were provided
+_LIBCPP_NODISCARD_AFTER_CXX17 _LIBCPP_OVERRIDABLE_FUNC_VIS void* operator new(std::size_t __sz) _THROW_BAD_ALLOC;
+                                                                 ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/new:190:66: note: candidate function not viable: requires 3 arguments, but 2 were provided
+_LIBCPP_NODISCARD_AFTER_CXX17 _LIBCPP_OVERRIDABLE_FUNC_VIS void* operator new(std::size_t __sz, std::align_val_t, const std::nothrow_t&) _NOEXCEPT _NOALIAS;
+                                                                 ^
+bintree.cpp:75:7: note: candidate function not viable: requires 3 arguments, but 2 were provided
+void* operator new(size_t size, Node& tree, std::any data)
+      ^
+bintree.cpp:103:15: error: no matching function for call to 'operator new'
+        tree.right = new(tree) Node;
+                     ^  ~~~~~~
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/new:206:70: note: candidate function not viable: no known conversion from 'Node' to 'void *' for 2nd argument; take the address of the argument with &
+_LIBCPP_NODISCARD_AFTER_CXX17 inline _LIBCPP_INLINE_VISIBILITY void* operator new  (std::size_t, void* __p) _NOEXCEPT {return __p;}
+                                                                     ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/new:173:66: note: candidate function not viable: no known conversion from 'Node' to 'const std::nothrow_t' for 2nd argument
+_LIBCPP_NODISCARD_AFTER_CXX17 _LIBCPP_OVERRIDABLE_FUNC_VIS void* operator new(std::size_t __sz, const std::nothrow_t&) _NOEXCEPT _NOALIAS;
+                                                                 ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/new:189:66: note: candidate function not viable: no known conversion from 'Node' to 'std::align_val_t' for 2nd argument
+_LIBCPP_NODISCARD_AFTER_CXX17 _LIBCPP_OVERRIDABLE_FUNC_VIS void* operator new(std::size_t __sz, std::align_val_t) _THROW_BAD_ALLOC;
+                                                                 ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/new:172:66: note: candidate function not viable: requires single argument '__sz', but 2 arguments were provided
+_LIBCPP_NODISCARD_AFTER_CXX17 _LIBCPP_OVERRIDABLE_FUNC_VIS void* operator new(std::size_t __sz) _THROW_BAD_ALLOC;
+                                                                 ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/new:190:66: note: candidate function not viable: requires 3 arguments, but 2 were provided
+_LIBCPP_NODISCARD_AFTER_CXX17 _LIBCPP_OVERRIDABLE_FUNC_VIS void* operator new(std::size_t __sz, std::align_val_t, const std::nothrow_t&) _NOEXCEPT _NOALIAS;
+                                                                 ^
+bintree.cpp:75:7: note: candidate function not viable: requires 3 arguments, but 2 were provided
+void* operator new(size_t size, Node& tree, std::any data)
+      ^
+5 errors generated.

@@ -6,7 +6,7 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/02 22:00:28 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/10/04 04:40:33 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/10/10 04:32:28 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 # include <iostream>
 # include <stdlib.h>
+# include <functional>
 //# include <variant>
 # include <any>
 
@@ -38,18 +39,27 @@ class	Node
 		std::any	data;
 		char		type;
 		int			height;
+		int			depth;
 		Node		*left;
 		Node		*right;
+		Node		*dad;
 
 	Node();
-	Node(std::any = 0, int = 0, char = 0);
+	//Node(int = 0, char type, std::any data); //очень бесполезный конструктор
 
 	~Node(); //рекуррентный деструктор для дерева
 
+	//void	PostOrderMap(Node *tree, void (*f)(...));
+	void	PostOrderMap(Node *tree, void (*f)(Node *node));
+	//void	DaddyMap(void (*f)(...));
+	void	DaddyMap(void (*f)(Node *node));
+	//void	DaddyMap(std::function<void(...)> f);
 	//setheights();
 	friend std::ostream& operator <<(std::ostream& os, const Node *tree);
 	friend std::istream& operator >>(std::istream& is, Node *tree);
-	friend void* operator new(size_t size, Node& tree, std::any data);
+	//friend void* operator new(size_t size, Node& tree, std::any data);
+	friend void* operator new(size_t size, Node *tree, std::any value);
+	friend void* operator new(size_t size, char type = 0);
 };
 
 #endif

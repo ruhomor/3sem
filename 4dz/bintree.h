@@ -6,7 +6,7 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/02 22:00:28 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/10/10 04:32:28 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/10/12 14:52:39 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@
 # include <iostream>
 # include <stdlib.h>
 # include <functional>
+# include "exception.h"
 //# include <variant>
-# include <any>
+//# include <any>
 
 //# define NODE_DATA std::variant<void*, char, int, float, double>
 /*
@@ -36,15 +37,17 @@ class	Node
 //		void											*data;
 //		node_data										data;
 		//NODE_DATA	data;
-		std::any	data;
-		char		type;
+	//	std::any	data;
+		int			data;
+	//	char		type;
 		int			height;
 		int			depth;
 		Node		*left;
 		Node		*right;
-		Node		*dad;
 
 	Node();
+	Node(Node *tree, int value)
+	//Node(Node *tree, std::any value);
 	//Node(int = 0, char type, std::any data); //очень бесполезный конструктор
 
 	~Node(); //рекуррентный деструктор для дерева
@@ -52,14 +55,13 @@ class	Node
 	//void	PostOrderMap(Node *tree, void (*f)(...));
 	void	PostOrderMap(Node *tree, void (*f)(Node *node));
 	//void	DaddyMap(void (*f)(...));
-	void	DaddyMap(void (*f)(Node *node));
 	//void	DaddyMap(std::function<void(...)> f);
 	//setheights();
 	friend std::ostream& operator <<(std::ostream& os, const Node *tree);
 	friend std::istream& operator >>(std::istream& is, Node *tree);
 	//friend void* operator new(size_t size, Node& tree, std::any data);
-	friend void* operator new(size_t size, Node *tree, std::any value);
-	friend void* operator new(size_t size, char type = 0);
+	friend void* operator new(size_t size, Node *tree, int value);
+	friend void* operator new(size_t size, char type);
 };
 
 #endif

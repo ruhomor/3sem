@@ -6,7 +6,7 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 01:53:50 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/10/17 01:01:41 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/10/17 01:47:11 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,28 +104,44 @@ int		height(Node node)
 	return (0);
 }
 
-Node	rotateRight(Node root)
+	void leftRotate(NodePtr x) {
+		NodePtr y = x->right;
+		x->right = y->left;
+		if (y->left != nullptr) {
+			y->left->parent = x;
+		}
+		y->parent = x->parent;
+		if (x->parent == nullptr) {
+			this->root = y;
+		} else if (x == x->parent->left) {
+			x->parent->left = y;
+		} else {
+			x->parent->right = y;
+		}
+		y->left = x;
+		x->parent = y;
+
+		// update the balance factor
+		x->bf = x->bf - 1 - max(0, y->bf);
+		y->bf = y->bf - 1 + min(0, x->bf);
+	}
+
+void	Tree::rightRotate(Node rroot)
 {
-    Node newroot = root->left;
-    Node tmp = newroot->right;
+	Node newroot = rroot->left;
 
-    newroot->right = root;
-    root->left = tmp;
-	root->height = std::max(height(root->left), height(root->right)) + 1;
-	newroot->height = std::max(height(newroot->left), height(newroot->right)) + 1;
-	return(newroot);
-}
-
-Node	rotateLeft(Node root)
-{
-    Node newroot = root->right;
-    Node tmp = newroot->left;
-
-    newroot->left = root;
-    root->right = tmp;
-    root->height = std::max(height(root->left), height(root->right)) + 1;
-    newroot->height = std::max(height(newroot->left), height(newroot->right)) + 1;
-    return(newroot);
+	rroot->left = newroot->right;
+	if (newroot->right != nullptr)
+		newroot->right->parent = rroot;
+	newroot->parent = rroot->parent;
+	if (!(rroot->parent))
+		this->root = newroot;
+	else if (rroot == rroot->parent->right)
+		rroot->parent->right = newroot;
+	else
+		rroot->parent->left = newroot;
+	newroot->right = rroot;
+	rroot->parent = newroot;
 }
 
 void	Tree::insert(int d)
@@ -154,20 +170,6 @@ void	Tree::insert(int d)
 	cur->height = std::max(height(cur->left), height(cur->right)) + 1;
 	//balance?????
 	bs = balance(cur);
-	if (bs > 1 && d < cur->left->data)
-		rotateRight(cur);
-	if (bs < -1 && d > cur->right->data)
-		rotateLeft(cur);
-	if (bs > 1 && d > cur->left->data)
-	{
-		cur->left = rotateLeft(cur->left);
-		rotateRight(cur);
-	}
-	if (bs < -1 && d < cur->right->data)
-	{
-		cur->right = rotateRight(cur->right);
-		rotateLeft(cur);
-	}
 }
 
 int		main()

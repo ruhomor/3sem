@@ -6,7 +6,7 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/02 22:00:28 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/10/17 00:16:29 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/10/17 01:47:43 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ class	Tree
 		void	inOrderMap(Node node, std::function<void(Node node)> f);
 		void	postOrderMap(Node node, std::function<void(Node node)> f);
 
+		void	rightRotate(Node rroot);
 		void	insert(int d);
 };
 

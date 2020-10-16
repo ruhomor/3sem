@@ -6,7 +6,7 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/02 22:00:28 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/10/12 14:52:39 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/10/16 22:27:39 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <iostream>
 # include <stdlib.h>
 # include <functional>
-# include "exception.h"
 //# include <variant>
 //# include <any>
 
@@ -31,37 +30,48 @@ union	node_data //я не знаю как это сделать нормальн
 	char	c;
 };
 */
-class	Node
+
+typedef struct	StructNode
 {
+	int			data;
+	StructNode	*parent;
+	StructNode	*left;
+	StructNode	*right;
+	int			height;
+	StructNode()
+	{
+		printf("im working!\n");
+		parent = NULL;
+		left = NULL;
+		right = NULL;
+		height = 1;
+		data = -1;
+	}
+}				TypeNode;
+
+typedef TypeNode *Node; //Node is in fact pointer to node here ok?
+
+class	Tree
+{
+	private:
+		Node	root;
+		void	initNode(Node, int);
 	public:
-//		void											*data;
-//		node_data										data;
-		//NODE_DATA	data;
-	//	std::any	data;
-		int			data;
-	//	char		type;
-		int			height;
-		int			depth;
-		Node		*left;
-		Node		*right;
+		Tree();
+		friend std::ostream& operator <<(std::ostream& os, Tree tree);
+		friend std::istream& operator >>(std::istream& is, Tree tree);
+		//friend void* operator new(size_t size, char type);
+		Node	getRoot();
+		int		getData(Node node);
+		void	preOrderMap(std::function<void(Node node)> f);
+		void	inOrderMap(std::function<void(Node node)> f);
+		void	postOrderMap(std::function<void(Node node)> f);
 
-	Node();
-	Node(Node *tree, int value)
-	//Node(Node *tree, std::any value);
-	//Node(int = 0, char type, std::any data); //очень бесполезный конструктор
+		void	preOrderMap(Node node, std::function<void(Node node)> f);
+		void	inOrderMap(Node node, std::function<void(Node node)> f);
+		void	postOrderMap(Node node, std::function<void(Node node)> f);
 
-	~Node(); //рекуррентный деструктор для дерева
-
-	//void	PostOrderMap(Node *tree, void (*f)(...));
-	void	PostOrderMap(Node *tree, void (*f)(Node *node));
-	//void	DaddyMap(void (*f)(...));
-	//void	DaddyMap(std::function<void(...)> f);
-	//setheights();
-	friend std::ostream& operator <<(std::ostream& os, const Node *tree);
-	friend std::istream& operator >>(std::istream& is, Node *tree);
-	//friend void* operator new(size_t size, Node& tree, std::any data);
-	friend void* operator new(size_t size, Node *tree, int value);
-	friend void* operator new(size_t size, char type);
+		void	insert(int k);
 };
 
 #endif

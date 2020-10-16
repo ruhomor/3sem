@@ -6,93 +6,125 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 01:53:50 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/10/12 14:50:19 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/10/16 22:29:43 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bintree.h"
-/*
-Node::Node(int h, char t, std::any i)
+
+Tree::Tree()
 {
-	data = i;
-	height = h;
-	type = t;
-	left = NULL;
-	right = NULL;
-}
-*/
-Node::Node()
-{
-	left = NULL;
-	right = NULL;
-	height = 1;
-	depth = 0;
+	root = NULL;
 }
 
-Node::~Node() //рекуррентный деструктор для дерева
+std::ostream& operator<<(std::ostream& os, const Tree tree)
 {
-	delete left;
-	delete right;
-	delete this;
 }
 
-Node::Node(Node *tree)
+std::istream& operator>>(std::istream& is, Tree tree)
 {
-	int		value;
+}
 
-	std::cout << "введите значение: ";
-	std::cin >> data;
-	height = tree->height - 1;
-	depth = tree->depth + 1;
-	if (data >= tree->data)
-		tree->right = this;
+void	Tree::preOrderMap(Node node, std::function<void(Node node)> f)
+{
+	if (node)
+	{
+		f(node);
+		Tree::preOrderMap(node->left, f);
+		Tree::preOrderMap(node->right, f);
+	}
+}
+
+void	Tree::preOrderMap(std::function<void(Node node)> f)
+{
+	if (Node node = this->root)
+	{
+		f(node);
+		Tree::preOrderMap(node->left, f);
+		Tree::preOrderMap(node->right, f);
+	}
+}
+
+void	Tree::inOrderMap(Node node, std::function<void(Node node)> f)
+{
+	if (node)
+	{
+		f(node);
+		Tree::inOrderMap(node->left, f);
+		Tree::inOrderMap(node->right, f);
+	}
+}
+
+void	Tree::inOrderMap(std::function<void(Node node)> f)
+{
+	if (Node node = this->root)
+	{
+		f(node);
+		Tree::inOrderMap(node->left, f);
+		Tree::inOrderMap(node->right, f);
+	}
+}
+
+void	Tree::postOrderMap(Node node, std::function<void(Node node)> f)
+{
+	if (node)
+	{
+		f(node);
+		Tree::postOrderMap(node->left, f);
+		Tree::postOrderMap(node->right, f);
+	}
+}
+
+void	Tree::postOrderMap(std::function<void(Node node)> f)
+{
+	if (Node node = this->root)
+	{
+		f(node);
+		Tree::postOrderMap(node->left, f);
+		Tree::postOrderMap(node->right, f);
+	}
+}
+
+Node	Tree::getRoot()
+{
+	return (this->root);
+}
+
+void	Tree::insert(int k)
+{
+	Node	next = this->root;
+	Node	cur = NULL;
+	Node	node = new TypeNode;
+
+	node->data = k;
+	while (next)
+	{
+		cur = next;
+		if (node->data < next->data)
+			next = next->left;
+		else
+			next = next->right;
+	}
+	node->parent = cur;
+	if (!(cur))
+		root = node;
+	else if (node->data < cur->data)
+		cur->left = node;
 	else
-		tree->left = this;
-}
-
-Node::Node(Node *tree, int value)
-{
-	data = value;
-	height = tree->height - 1;
-	depth = tree->depth + 1;
-	if (data >= tree->data)
-		tree->right = this;
-	else
-		tree->left = this;
-}
-
-void	Node::PostOrderMap(Node *tree, void (*f)(Node *node))
-{
-
-}
-
-std::ostream& operator<<(std::ostream& os, const Node *tree)
-{
-	if (tree)
-		os << tree->data << ' ';
-	os << tree->left << ' ';
-	os << tree->right << ' ';
-	return (os);
-}
-
-std::istream& operator>>(std::istream& is, Node *tree)
-{
-	std::cin >> tree->data;
-	return (is);
-}
-
-void* operator new(size_t size)
-{
-	return ((Node*)malloc(size));
+		cur->right = node;
+	//balance?????
 }
 
 int		main()
 {
-	Node	tree;
+	Tree	tree;
 
-	std::cin >> &tree;
-	tree.left = new Node(&tree, 3);
-	tree.right = new Node(&tree, 2);
-	std::cout << &tree << "height: " << tree.height;
+	tree.insert(7);
+	tree.insert(3);
+	tree.insert(14);
+	tree.insert(30);
+	tree.insert(9);
+	printf("%d\n", tree.getRoot()->data);
+	tree.postOrderMap([](Node node){ std::cout << node->data << ' '; });
 	return (0);
 }

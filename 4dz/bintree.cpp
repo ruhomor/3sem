@@ -6,7 +6,7 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 01:53:50 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/10/16 22:29:43 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/10/16 23:03:35 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,9 @@ void	Tree::insert(int k)
 	else
 		cur->right = node;
 	//balance?????
+	int		bs;
+	bs = node->left ?
+
 }
 
 int		main()
@@ -124,6 +127,7 @@ int		main()
 	tree.insert(14);
 	tree.insert(30);
 	tree.insert(9);
+	//tree.balance();
 	printf("%d\n", tree.getRoot()->data);
 	tree.postOrderMap([](Node node){ std::cout << node->data << ' '; });
 	return (0);

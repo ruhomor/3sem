@@ -6,7 +6,7 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 01:53:50 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/10/16 23:03:35 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/10/17 01:01:41 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,52 @@ Node	Tree::getRoot()
 	return (this->root);
 }
 
-void	Tree::insert(int k)
+int		balance(Node node)
+{
+	if (node)
+		return (height(node->left) - height(node->right));
+	return (0);
+}
+
+int		height(Node node)
+{
+	if (node)
+		return (node->height);
+	return (0);
+}
+
+Node	rotateRight(Node root)
+{
+    Node newroot = root->left;
+    Node tmp = newroot->right;
+
+    newroot->right = root;
+    root->left = tmp;
+	root->height = std::max(height(root->left), height(root->right)) + 1;
+	newroot->height = std::max(height(newroot->left), height(newroot->right)) + 1;
+	return(newroot);
+}
+
+Node	rotateLeft(Node root)
+{
+    Node newroot = root->right;
+    Node tmp = newroot->left;
+
+    newroot->left = root;
+    root->right = tmp;
+    root->height = std::max(height(root->left), height(root->right)) + 1;
+    newroot->height = std::max(height(newroot->left), height(newroot->right)) + 1;
+    return(newroot);
+}
+
+void	Tree::insert(int d)
 {
 	Node	next = this->root;
 	Node	cur = NULL;
 	Node	node = new TypeNode;
+	int		bs;
 
-	node->data = k;
+	node->data = d;
 	while (next)
 	{
 		cur = next;
@@ -112,10 +151,23 @@ void	Tree::insert(int k)
 		cur->left = node;
 	else
 		cur->right = node;
+	cur->height = std::max(height(cur->left), height(cur->right)) + 1;
 	//balance?????
-	int		bs;
-	bs = node->left ?
-
+	bs = balance(cur);
+	if (bs > 1 && d < cur->left->data)
+		rotateRight(cur);
+	if (bs < -1 && d > cur->right->data)
+		rotateLeft(cur);
+	if (bs > 1 && d > cur->left->data)
+	{
+		cur->left = rotateLeft(cur->left);
+		rotateRight(cur);
+	}
+	if (bs < -1 && d < cur->right->data)
+	{
+		cur->right = rotateRight(cur->right);
+		rotateLeft(cur);
+	}
 }
 
 int		main()

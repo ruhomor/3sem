@@ -6,7 +6,7 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 01:53:50 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/10/17 01:47:11 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/10/18 22:50:56 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,34 +104,30 @@ int		height(Node node)
 	return (0);
 }
 
-	void leftRotate(NodePtr x) {
-		NodePtr y = x->right;
-		x->right = y->left;
-		if (y->left != nullptr) {
-			y->left->parent = x;
-		}
-		y->parent = x->parent;
-		if (x->parent == nullptr) {
-			this->root = y;
-		} else if (x == x->parent->left) {
-			x->parent->left = y;
-		} else {
-			x->parent->right = y;
-		}
-		y->left = x;
-		x->parent = y;
+void	Tree::leftRotate(Node rroot)
+{
+	Node newroot = rroot->right;
 
-		// update the balance factor
-		x->bf = x->bf - 1 - max(0, y->bf);
-		y->bf = y->bf - 1 + min(0, x->bf);
-	}
+	rroot->right = newroot->left;
+	if (newroot->left != NULL)
+		newroot->left->parent = rroot;
+	newroot->parent = rroot->parent;
+	if (rroot->parent == NULL)
+		this->root = newroot;
+	else if (rroot == rroot->parent->left)
+		rroot->parent->left = newroot;
+	else
+		rroot->parent->right = newroot;
+	newroot->left = rroot;
+	rroot->parent = newroot;
+}
 
 void	Tree::rightRotate(Node rroot)
 {
 	Node newroot = rroot->left;
 
 	rroot->left = newroot->right;
-	if (newroot->right != nullptr)
+	if (newroot->right != NULL)
 		newroot->right->parent = rroot;
 	newroot->parent = rroot->parent;
 	if (!(rroot->parent))
@@ -167,7 +163,8 @@ void	Tree::insert(int d)
 		cur->left = node;
 	else
 		cur->right = node;
-	cur->height = std::max(height(cur->left), height(cur->right)) + 1;
+	if (cur)
+		cur->height = std::max(height(cur->left), height(cur->right)) + 1;
 	//balance?????
 	bs = balance(cur);
 }
@@ -182,7 +179,7 @@ int		main()
 	tree.insert(30);
 	tree.insert(9);
 	//tree.balance();
-	printf("%d\n", tree.getRoot()->data);
+//	printf("%d\n", tree.getRoot()->data);
 	tree.postOrderMap([](Node node){ std::cout << node->data << ' '; });
 	return (0);
 }

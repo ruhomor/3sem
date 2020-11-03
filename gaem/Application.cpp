@@ -1,36 +1,5 @@
 #include "gaem.h"
 
-Map::Map(int m, int n) //Matrix[n][m]
-{
-	this->resize(n, vector<int>(m));
-	init = true;
-}
-
-Map::Map() //Matrix[n][m]
-{
-	init = false;
-}
-
-void	Map::display()
-{
-	for (int i = 0; i < (*this).size(); i++)
-	{
-		for (int j = 0; j < (*this)[i].size(); j++)
-			 std::cout << (*this)[i][j] << ' ';
-		std::cout << '\n';
-	}
-}
-
-bool	Map::isInit()
-{
-	return (init);
-}
-
-void	Map::setInit()
-{
-	init = true;
-}
-
 static void		key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) // key -- код клавиши

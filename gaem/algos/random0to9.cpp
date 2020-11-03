@@ -1,10 +1,12 @@
+//#include "game.h"
 #include <iostream>
 #include <fstream>
 #include <stdlib.h>
 #include <time.h>
 #include <vector>
 #include <map>
-//#include <sh.h>
+#define PLAYERS "players.txt"
+#define GAMEMAP "map.txt"
 
 std::vector <std::vector <int> >	getMap(char **argv, size_t &x, size_t &y)
 {
@@ -18,7 +20,7 @@ std::vector <std::vector <int> >	getMap(char **argv, size_t &x, size_t &y)
 	/* reading information about players stored as pairs of id's and lifes */
 	std::ifstream					player("players.txt"); //tmp players_file name
 
-	for (int i = 0; i < playersnum * 2; i++)
+	for (int i = 0; i < playersnum; i++)
 	{
 		int		key, value;
 
@@ -43,7 +45,7 @@ std::vector <std::vector <int> >	getMap(char **argv, size_t &x, size_t &y)
 				y = i;
 				std::cout << "my x " << x << " my y " << y << '\n';
 			}
-			map[j].push_back(lifes[someid]);
+			map[i].push_back(lifes[someid]);
 			std::cout << someid << " has " << lifes[someid] << " lifes" << '\n';
 		}
 	}
@@ -52,8 +54,8 @@ std::vector <std::vector <int> >	getMap(char **argv, size_t &x, size_t &y)
 
 int									main(int argc, char **argv) // argv[1] - m argv[2] - n argv[3] - id argv[4]
 {
-	size_t	x, y;
-	std::vector <std::vector <int> >	map = getMap(argv, x, y);
+	size_t							x, y;
+	std::vector<std::vector<int> >	map = getMap(argv, x, y);
 
 	srand(time(NULL));
 	std::cout << rand() % 9;

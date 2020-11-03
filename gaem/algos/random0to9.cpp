@@ -24,6 +24,7 @@ std::vector <std::vector <int> >	getMap(char **argv, size_t &x, size_t &y)
 
 		player >> key; //id
 		player >> value; //helth points
+		std::cout << "key " << key << " value " << value << '\n';
 		lifes.insert(std::pair<int, int>(key, value));
 	}
 
@@ -40,8 +41,10 @@ std::vector <std::vector <int> >	getMap(char **argv, size_t &x, size_t &y)
 			{
 				x = j;
 				y = i;
+				std::cout << "my x " << x << " my y " << y << '\n';
 			}
 			map[j].push_back(lifes[someid]);
+			std::cout << someid << " has " << lifes[someid] << " lifes" << '\n';
 		}
 	}
 	return (map);

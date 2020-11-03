@@ -1,50 +1,47 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   gaem.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/31 16:46:15 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/10/31 19:16:36 by Ruslan           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <iostream>
-#include <GLFW/glfw3.h>
+#include <GLFW3/glfw>
 
-int main(void)
+static void		key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
-    GLFWwindow* window;
+	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) // key -- код клавиши
+		glfwSetWindowShouldClose(window, GLFW_TRUE);
+}
 
-    /* Initialize the library */
-    if (!glfwInit())
-        return -1;
+int		main(void)
+{
+	GLFWwindow* window;
 
-    /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
-    if (!window)
-    {
-        glfwTerminate();
-        return -1;
-    }
+	/* Initialize the library */
+	if (!glfwInit())
+		return (-1);
 
-    /* Make the window's context current */
-    glfwMakeContextCurrent(window);
+	/* knopka */
+	glfwSetKeyCallback(window, key_callback); //windows -- окно key_callback -- функция обрабатывающая кнопки
 
-    /* Loop until the user closes the window */
-    while (!glfwWindowShouldClose(window))
-    {
-        /* Render here */
-        glClear(GL_COLOR_BUFFER_BIT);
+	/* Create a windowed mode window and its OpenGL context */
+	window = glfwCreateWindow(640, 480, "GAEM", NULL, NULL);
+	if (!window)
+	{
+		glfwTerminate();
+		return (-1);
+	}
 
-        /* Swap front and back buffers */
-        glfwSwapBuffers(window);
+	/* Make the window's context current */
+	glfwMakeContextCurrent(window);
 
-        /* Poll for and process events */
-        glfwPollEvents();
-    }
+	/* Loop until the user closes the window */
+	while (!glfwWindowShouldClose(window))
+	{
+		/* Render here */
+		glClear(GL_COLOR_BUFFER_BIT);
 
-    glfwTerminate();
-    return 0;
+		/* Swap front and back buffers */
+		glfwSwapBuffers(window);
+
+		/* Poll for and process events */
+		glfwPollEvents();
+	}
+
+	glfwTerminate();
+	return 0;
 }

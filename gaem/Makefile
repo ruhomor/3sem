@@ -6,32 +6,48 @@
 #    By: kachiote <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/03 14:53:22 by kachiote          #+#    #+#              #
-#    Updated: 2020/11/03 13:54:09 by Ruslan           ###   ########.fr        #
+#    Updated: 2020/11/03 18:21:27 by Ruslan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = g++
 
-NAME = love
+NAME = Application
 
-SRCS = $(wildcard *.cpp)
+SRCS = map
 
-INC = ./
+HEADERS = $(patsubst %, %.h, $(SRCS))
 
-OUT = $(SRCS:%.cpp=%)
+INC = gaem.h
 
-CXXFLAGS = -std=c++17 -lglfw -lglew -framework Cocoa -framework OpenGL -framework IOKit -framework CoreVideo# -Werror -Wextra -Wall
+OBJS = $(patsubst %, %.o, $(SRCS))
 
-all: $(OUT)
+CXXFILES = $(patsubst %, %.cpp, $(SRCS))
+
+CXXFLAGS = -std=c++17 -O3
+
+FRAMEWORKS = -lglfw -lglew -framework Cocoa -framework OpenGL -framework IOKit -framework CoreVideo
+
+$(NAME): $(OBJS) $(NAME).o
+	$(CXX) $(CXXFLAGS) $(FRAMEWORKS) -o $(NAME) $(OBJS) $(NAME).o
+
+$(NAME).o: $(INC)
+	$(CXX) $(CXXFLAGS) $(NAME).cpp -c
+
+$(OBJS): $(HEADERS)
+
+$(NAME).cpp: $(INC)
+
+all: $(NAME)
 
 clean:
-	@rm -f *.o
+	@rm -f $(OBJS) $(NAME).o
 
 love:
 	@echo "not war"
 
 fclean: clean
-	@rm -f $(OUT)
+	@rm -f $(NAME)
 
 re: fclean all
 

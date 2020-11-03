@@ -39,12 +39,12 @@ static void		key_callback(GLFWwindow* window, int key, int scancode, int action,
 
 static void		printUsage()
 {
-	printf("Usage: ./Application OPTIONAL: {map size x} {map size y}\n");
+	std::cout << "Usage: ./Application OPTIONAL: {map size x} {map size y}\n";
 }
 
 static void		printWrong()
 {
-	printf("Wrong Number of Arguments\n"); //TODO print to errorstream?
+	std::cout << "Wrong Number of Arguments\n"; //TODO print to errorstream?
 }
 
 int		main(int argc, char **argv) //TODO map size

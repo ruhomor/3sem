@@ -3,12 +3,12 @@
 Map::Map(int m, int n) //Matrix[n][m]
 {
 	this->resize(n, vector<int>(m));
-	init = 1;
+	init = true;
 }
 
-Map::Map()
+Map::Map() //Matrix[n][m]
 {
-	init = 0;
+	init = false;
 }
 
 void	Map::display()
@@ -73,9 +73,8 @@ int		main(int argc, char **argv) //TODO map size
 		gameMap.resize(MAPY, std::vector<int>(MAPX));
 
 	/* initializing gameMap part2 */
+	//TODO try compiling algorithms
 
-	//TODO try compiling algorithms from the outside
-	//pretend this part is finished and do everything else
 
 	gameMap.display(); //debug
 

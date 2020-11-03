@@ -6,7 +6,7 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 12:19:49 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/11/03 14:41:05 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/11/03 14:54:06 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 # include <GLFW/glfw3.h>
 # include <vector>
+# include <tuple>
 # include <iostream>
 # define WINX 640
 # define WINY 480

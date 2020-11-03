@@ -15,9 +15,6 @@ int		main(void)
 	if (!glfwInit())
 		return (-1);
 
-	/* knopka */
-	glfwSetKeyCallback(window, key_callback); //windows -- окно key_callback -- функция обрабатывающая кнопки
-
 	/* Create a windowed mode window and its OpenGL context */
 	window = glfwCreateWindow(640, 480, "GAEM", NULL, NULL);
 	if (!window)
@@ -25,6 +22,9 @@ int		main(void)
 		glfwTerminate();
 		return (-1);
 	}
+
+	/* knopka */
+	glfwSetKeyCallback(window, key_callback); //windows -- окно key_callback -- функция обрабатывающая кнопки
 
 	/* Make the window's context current */
 	glfwMakeContextCurrent(window);

@@ -6,7 +6,7 @@
 #    By: kachiote <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/03 14:53:22 by kachiote          #+#    #+#              #
-#    Updated: 2020/11/04 15:48:09 by Ruslan           ###   ########.fr        #
+#    Updated: 2020/11/05 02:15:27 by Ruslan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ ALGOFOLDER = algos
 
 NAME = Application
 
-SRCS = map
+SRCS = map \
+	   players
 
 HEADERS = $(patsubst %, %.h, $(SRCS))
 

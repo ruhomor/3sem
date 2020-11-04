@@ -6,7 +6,7 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 17:36:47 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/11/03 17:41:01 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/11/05 02:07:23 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # define MAP_H
 # include <vector>
 # include <iostream>
+# include <stdlib.h>
+# include <time.h>
 
 class	Map : public std::vector < std::vector<int> >
 {
@@ -25,10 +27,11 @@ private:
 public:
 	Map();
 	Map(int m, int n);
-	bool isInit();
-	void setInit();
-	void gameStep();
-	void display();
+	bool	isInit();
+	void	setInit();
+	void	gameStep();
+	void	display();
+	void	randPlace(int id);
 };
 
 #endif

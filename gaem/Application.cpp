@@ -16,17 +16,20 @@ static void		printWrong()
 	std::cout << "Wrong Number of Arguments\n"; //TODO print to errorstream?
 }
 
-int		main(int argc, char **argv) //TODO map size
+int		main(int argc, char **argv) //TODO map size x[2] y[3] algofolder [1]
 {
 	GLFWwindow*		window;
 	Map				gameMap;
 
+	/* reading algorithms to playerTable */
+	PlayerVec		playersTable(argv[1]);
+
 	/* reading map size from command line */
 	if (argc != 1)
 	{
-		if (argc == 3)
+		if (argc == 4)
 		{
-			int		m = atoi(argv[1]), n = atoi(argv[2]);
+			int		m = atoi(argv[2]), n = atoi(argv[3]);
 			gameMap.resize(n, std::vector<int>(m));
 			gameMap.setInit();
 		}
@@ -42,9 +45,13 @@ int		main(int argc, char **argv) //TODO map size
 		gameMap.resize(MAPY, std::vector<int>(MAPX));
 
 	/* initializing gameMap part2 */
-	//TODO compiling algoes
-	//create player entity out of algo
-
+	//DONE compiling algoes
+	//DONE create player entity out of algo
+	//TODO MAP PLACER FUNCTION
+	gameMap.display(); //debug
+	gameMap.randPlace(playersTable[0]);
+	gameMap.display(); //debug
+	gameMap.randPlace(playersTable[1]);
 	gameMap.display(); //debug
 
 	/* Initialize the library */

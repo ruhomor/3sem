@@ -21,6 +21,22 @@ void	Map::display()
 	}
 }
 
+void	Map::randPlace(int id)
+{
+	int		x, y;
+
+	y = rand() % (*this).size();
+	x = rand() % (*this)[0].size();
+	std::cout << "random placement x: "
+		<< x << " y " << y << '\n';
+	while ((*this)[y][x] != 0)
+	{
+		y = rand() % (*this).size();
+		x = rand() % (*this)[0].size();
+	}
+	(*this)[y][x] = id;
+}
+
 bool	Map::isInit()
 {
 	return (init);

@@ -3,7 +3,7 @@
 /* testing PLAYERS classes */
 int		main(int argc, char **argv)
 {
-	PlayerDict		PlayersTable(argv[1]);
+	PlayerVec		PlayersTable(argv[1]);
 
 	return (0);
 }

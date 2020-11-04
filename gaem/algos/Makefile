@@ -6,7 +6,7 @@
 #    By: kachiote <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/03 14:53:22 by kachiote          #+#    #+#              #
-#    Updated: 2020/11/04 14:26:52 by Ruslan           ###   ########.fr        #
+#    Updated: 2020/11/04 15:30:40 by Ruslan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,16 +20,21 @@ SRCS = $(filter-out game.cpp, $(wildcard *.cpp))
 
 OUT = $(SRCS:%.cpp=%)
 
+PLAYERS = $(SRCS:%.cpp=%.player)
+
 CXXFLAGS = -std=c++17# -Werror -Wextra -Wall
 
-all: $(OUT)
+all: $(PLAYERS)
+
+$(PLAYERS): $(OUT)
+	mv $(@:%.player=%) $@
 
 $(NAME).o: $(INC)
 
 $(OUT): $(NAME).o
 
 clean:
-	@rm -f $(OUT) $(NAME).o
+	@rm -f $(PLAYERS) $(NAME).o
 
 love:
 	@echo "not war"

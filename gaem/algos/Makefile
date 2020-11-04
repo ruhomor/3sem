@@ -6,7 +6,7 @@
 #    By: kachiote <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/03 14:53:22 by kachiote          #+#    #+#              #
-#    Updated: 2020/11/04 15:30:40 by Ruslan           ###   ########.fr        #
+#    Updated: 2020/11/04 15:41:28 by Ruslan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,12 +34,13 @@ $(NAME).o: $(INC)
 $(OUT): $(NAME).o
 
 clean:
-	@rm -f $(PLAYERS) $(NAME).o
+	@rm -f $(NAME).o
 
 love:
 	@echo "not war"
 
 fclean: clean
+	$(PLAYERS)
 
 re: fclean all
 

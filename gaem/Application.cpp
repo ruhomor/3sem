@@ -42,8 +42,8 @@ int		main(int argc, char **argv) //TODO map size
 		gameMap.resize(MAPY, std::vector<int>(MAPX));
 
 	/* initializing gameMap part2 */
-	//TODO try compiling algorithms
-
+	//TODO compiling algoes
+	//create player entity out of algo
 
 	gameMap.display(); //debug
 

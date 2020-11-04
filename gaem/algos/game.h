@@ -6,7 +6,7 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 00:54:59 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/11/04 02:39:16 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/11/04 13:48:46 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,23 @@ public:
 class	GameState : public std::vector< std::vector<int> >
 {
 private:
-	int								x, y;
-	PlayersState					lifes;
+	int				x, y, action;
+	PlayersState	lifes;
 
 public:
 	GameState(int n);
 	GameState(char **argv);
+	int				GetMyHP();
+	int				GetMyY();
+	int				GetMyX();
+	void			MoveUp();
+	void			MoveDown();
+	void			MoveLeft();
+	void			MoveRight();
+	void			ShootUp();
+	void			ShootDown();
+	void			ShootLeft();
+	void			ShootRight();
 };
 
 #endif

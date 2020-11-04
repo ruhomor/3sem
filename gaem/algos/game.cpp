@@ -2,7 +2,7 @@
 
 PlayersState::PlayersState()
 {
-	printf("creating PlayersState");
+//	printf("creating PlayersState");
 }
 
 void	PlayersState::init(int pnum)
@@ -31,6 +31,7 @@ GameState::GameState(char **argv)
 
 	lifes.init(atoi(argv[4]));
 	this->resize(n, std::vector<int>(m));
+	action = 0;
 
 	for (int i = 0; i < n; i++)
 	{
@@ -44,9 +45,71 @@ GameState::GameState(char **argv)
 				x = j;
 				y = i;
 				std::cout << "my x " << x << " my y " << y << '\n';
-			}
+		}
 			(*this)[i][j] = lifes[someid];
 			std::cout << someid << " has " << lifes[someid] << " lifes" << '\n';
 		}
 	}
+	/* DEBUG */
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < m; j++)
+			std::cout << (*this)[i][j] << ' '; //debug
+		std::cout << '\n';
+	}
+}
+
+int		GameState::GetMyX()
+{
+	return (x);
+}
+
+int		GameState::GetMyY()
+{
+	return (y);
+}
+
+int		GameState::GetMyHP()
+{
+	return ((*this)[y][x]);
+}
+
+void	GameState::MoveUp()
+{
+	action = 1;
+}
+
+void	GameState::MoveDown()
+{
+	action = 2;
+}
+
+void	GameState::MoveLeft()
+{
+	action = 3;
+}
+
+void	GameState::MoveRight()
+{
+	action = 4;
+}
+
+void	GameState::ShootUp()
+{
+	action = 5;
+}
+
+void	GameState::ShootDown()
+{
+	action = 6;
+}
+
+void	GameState::ShootLeft()
+{
+	action = 7;
+}
+
+void	GameState::ShootRight()
+{
+	action = 8;
 }

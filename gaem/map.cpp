@@ -2,7 +2,7 @@
 
 Map::Map(int m, int n) //Matrix[n][m]
 {
-	this->resize(n, vector<int>(m));
+	this->resize(n, std::vector<int>(m));
 	init = true;
 }
 

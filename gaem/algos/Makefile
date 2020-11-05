@@ -6,7 +6,7 @@
 #    By: kachiote <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/03 14:53:22 by kachiote          #+#    #+#              #
-#    Updated: 2020/11/04 15:41:28 by Ruslan           ###   ########.fr        #
+#    Updated: 2020/11/05 05:57:30 by Ruslan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ OUT = $(SRCS:%.cpp=%)
 
 PLAYERS = $(SRCS:%.cpp=%.player)
 
-CXXFLAGS = -std=c++17# -Werror -Wextra -Wall
+CXXFLAGS = -std=c++17 -O3# -Werror -Wextra -Wall
 
 all: $(PLAYERS)
 
@@ -40,7 +40,7 @@ love:
 	@echo "not war"
 
 fclean: clean
-	$(PLAYERS)
+	@rm -f $(PLAYERS)
 
 re: fclean all
 

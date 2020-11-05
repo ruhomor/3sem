@@ -6,15 +6,25 @@ Player::Player(std::string aName, int iid, int hhp)
 	algoName = aName;
 	id = iid;
 	hp = hhp;
-	isAlive = true;
+	if (hp > 0)
+		isAlive = true;
+	else
+		isAlive = false;
 	std::cout << "newPlayer! id: " << id << " name: " << algoName << " hp: " << hp <<'\n';
+}
+
+int		Player::getId()
+{
+	return (id);
 }
 
 PlayerVec::PlayerVec(std::string algoFolder)
 {
-	int				id = 0;
+	int				id = 1;
+	Player			zeroplayer("no_algo", 0, 0); //trashcoding
 
-    for(auto &p: fs::directory_iterator(algoFolder))
+	this->push_back(zeroplayer); //we dont need this but whatever
+	for(auto &p: fs::directory_iterator(algoFolder))
 	{
 		std::string		algoName = p.path();
 		std::size_t		pos;

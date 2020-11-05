@@ -8,6 +8,7 @@ Map::Map(int m, int n) //Matrix[n][m]
 
 Map::Map() //Matrix[n][m]
 {
+	srand((unsigned int)time(0));
 	init = false;
 }
 
@@ -33,6 +34,8 @@ void	Map::randPlace(int id)
 	{
 		y = rand() % (*this).size();
 		x = rand() % (*this)[0].size();
+		std::cout << "random placement x: "
+			<< x << " y " << y << '\n';
 	}
 	(*this)[y][x] = id;
 }

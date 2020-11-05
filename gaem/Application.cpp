@@ -8,7 +8,7 @@ static void		key_callback(GLFWwindow* window, int key, int scancode, int action,
 
 static void		printUsage()
 {
-	std::cout << "Usage: ./Application OPTIONAL: {map size x} {map size y}\n";
+	std::cout << "Usage: ./Application {algo folder name} OPTIONAL: {map size x} {map size y}\n";
 }
 
 static void		printWrong()
@@ -25,7 +25,7 @@ int		main(int argc, char **argv) //TODO map size x[2] y[3] algofolder [1]
 	PlayerVec		playersTable(argv[1]);
 
 	/* reading map size from command line */
-	if (argc != 1)
+	if (argc != 2)
 	{
 		if (argc == 4)
 		{
@@ -44,15 +44,21 @@ int		main(int argc, char **argv) //TODO map size x[2] y[3] algofolder [1]
 	if (!(gameMap.isInit()))
 		gameMap.resize(MAPY, std::vector<int>(MAPX));
 
-	/* initializing gameMap part2 */
 	//DONE compiling algoes
 	//DONE create player entity out of algo
-	//TODO MAP PLACER FUNCTION
+	//DONE MAP PLACER FUNCTION
+
 	gameMap.display(); //debug
-	gameMap.randPlace(playersTable[0]);
-	gameMap.display(); //debug
-	gameMap.randPlace(playersTable[1]);
-	gameMap.display(); //debug
+
+	/* placing players on map */
+	for (int i = 0; i < playersTable.size(); i++)
+	{
+		gameMap.randPlace(playersTable[i].getId());
+		gameMap.display(); //debug
+	}
+
+	//TODO write game step
+	/* game step */
 
 	/* Initialize the library */
 	if (!glfwInit())

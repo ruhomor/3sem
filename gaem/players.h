@@ -6,7 +6,7 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 15:52:12 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/11/05 01:08:37 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/11/05 04:07:36 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ private:
 	bool			isAlive;
 public:
 	Player(std::string aName, int iid, int hhp);
+	int				getId();
 //	int				getAction();
 //	int				getX();
 //	int				getY();

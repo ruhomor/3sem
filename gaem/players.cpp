@@ -32,8 +32,8 @@ int		Player::getAction(std::string algoFolder,
 		int alivePlayers, int maxX, int maxY)
 {
 	std::string		cmd = algoFolder + '/' + algoName + EXTENSION
-		+ ' ' + itoa(maxX) + ' ' + itoa(maxY) + ' '
-		+ itoa(id) + ' ' + itoa(alivePlayers) + ' ' //max_x max_y id num_of_players
+		+ ' ' + std::to_string(maxX) + ' ' + std::to_string(maxY) + ' '
+		+ std::to_string(id) + ' ' + std::to_string(alivePlayers) + ' ' //max_x max_y id num_of_players
 		+ '>' + "tmp.txt";
 	std::cout << cmd << '\n'; //debug
 	std::system(cmd.c_str());
@@ -64,6 +64,7 @@ int		PlayerVec::getAlivePlayersNum()
 	for (int i = 0; i < (*this).size(); i++)
 		if ((*this)[i].getAlive())
 			count++;
+	return (count);
 }
 
 PlayerVec::PlayerVec(std::string algoFolder)

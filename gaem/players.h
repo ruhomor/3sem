@@ -6,7 +6,7 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 15:52:12 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/11/05 16:55:26 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/11/05 22:05:29 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 # define PLAYERS_H
 # include <string>
-# include <stdlib.h> // for itoa???
 /* for reading filenames */
 # include <fstream>
 # include <iostream>
@@ -36,6 +35,7 @@ public:
 	int				getHP();
 	int				getAction(std::string algoFolder,
 			int alivePlayers, int maxX, int maxY);
+	int				getAlive();
 //	int				getX();
 //	int				getY();
 //	std::string		getName();

@@ -16,7 +16,7 @@ void	PlayersState::init(int pnum)
 
 		player >> key; //id
 		player >> value; //helth points
-		std::cout << "key " << key << " value " << value << '\n';
+		//std::cout << "key " << key << " value " << value << '\n';
 		this->insert(std::pair<int, int>(key, value));
 	}
 }
@@ -44,19 +44,21 @@ GameState::GameState(char **argv)
 			{
 				x = j;
 				y = i;
-				std::cout << "my x " << x << " my y " << y << '\n';
-		}
+				//std::cout << "my x " << x << " my y " << y << '\n';
+			}
 			(*this)[i][j] = lifes[someid];
-			std::cout << someid << " has " << lifes[someid] << " lifes" << '\n';
+			//std::cout << someid << " has " << lifes[someid] << " lifes" << '\n'; //debug
 		}
 	}
 	/* DEBUG */
+	/*
 	for (int i = 0; i < n; i++)
 	{
 		for (int j = 0; j < m; j++)
 			std::cout << (*this)[i][j] << ' '; //debug
 		std::cout << '\n';
 	}
+	*/
 }
 
 int		GameState::GetMyX()

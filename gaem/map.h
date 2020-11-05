@@ -6,7 +6,7 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 17:36:47 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/11/05 02:07:23 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/11/05 05:09:11 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # define MAP_H
 # include <vector>
 # include <iostream>
+# include <fstream>
 # include <stdlib.h>
 # include <time.h>
 
@@ -32,6 +33,7 @@ public:
 	void	gameStep();
 	void	display();
 	void	randPlace(int id);
+	void	writeToFile(std::string algoFolder);
 };
 
 #endif

@@ -18,6 +18,36 @@ int		Player::getId()
 	return (id);
 }
 
+int		Player::getHP()
+{
+	return (hp);
+}
+
+int		Player::getAction(std::string algoFolder)
+{
+	std::string		cmd = algoFolder + '/' + algoName + EXTENSION + ">tmp.txt";
+	std::cout << cmd << '\n'; //debug
+	std::system(cmd.c_str());
+
+	std::cout << std::ifstream("tmp.txt").rdbuf() << '\n'; //debug
+	return (hp);
+}
+
+void	PlayerVec::writeToFile(std::string algoFolder)
+{
+	std::ofstream	fael(algoFolder + '/' + PLAYERS);
+
+	std::cout << "HELLLLLOOOOO\n";
+	if (fael.is_open())
+	{
+		for (int i = 1; i < (*this).size(); i++)
+			fael << (*this)[i].getId() << ' ' << (*this)[i].getHP() << ' ';
+		fael.close();
+	}
+	else
+		std::cout << "Unable to open file\n";
+}
+
 PlayerVec::PlayerVec(std::string algoFolder)
 {
 	int				id = 1;

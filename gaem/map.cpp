@@ -1,4 +1,5 @@
 #include "map.h"
+#include "rules.h"
 
 Map::Map(int m, int n) //Matrix[n][m]
 {
@@ -17,9 +18,27 @@ void	Map::display()
 	for (int i = 0; i < (*this).size(); i++)
 	{
 		for (int j = 0; j < (*this)[i].size(); j++)
-			 std::cout << (*this)[i][j] << ' ';
+			std::cout << (*this)[i][j] << ' ';
 		std::cout << '\n';
 	}
+}
+
+void	Map::writeToFile(std::string algoFolder)
+{
+	std::ofstream	fael(algoFolder + '/' + GAMEMAP);
+
+	if (fael.is_open())
+	{
+		for (int i = 0; i < (*this).size(); i++)
+		{
+			for (int j = 0; j < (*this)[i].size(); j++)
+				fael << (*this)[i][j] << ' ';
+			fael << '\n';
+		}
+		fael.close();
+	}
+	else
+		std::cout << "Unable to open file\n";
 }
 
 void	Map::randPlace(int id)

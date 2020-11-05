@@ -6,21 +6,20 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 00:54:59 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/11/04 13:48:46 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/11/05 05:04:26 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GAME_H
 
 # define GAME_H
+# include "../rules.h"
 # include <iostream>
 # include <fstream>
 # include <stdlib.h>
 # include <time.h>
 # include <vector>
 # include <map>
-# define PLAYERS "players.txt"
-# define GAMEMAP "map.txt"
 
 class	PlayersState : public std::map<int, int>
 {

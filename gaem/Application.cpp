@@ -60,9 +60,18 @@ int		main(int argc, char **argv) //TODO map size x[2] y[3] algofolder [1]
 	//TODO write game step
 	/* game step */
 	//TODO write map to file map.txt
+	gameMap.writeToFile(argv[1]);
 	//TODO write playerinfo to file players.txt
+	playersTable.writeToFile(argv[1]);
 	//TODO write getAction which will get action from binaries
+	std::cout << "coco" << '\n';
+	for(int i = 0; i < playersTable.size(); i++)
+	{
+		std::cout << "coco" << '\n';
+		playersTable[i].getAction(argv[1]);
+	}
 	//TODO write move step
+
 	//TODO write shoot step
 
 	/* Initialize the library */

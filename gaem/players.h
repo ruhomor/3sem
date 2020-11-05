@@ -6,7 +6,7 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 15:52:12 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/11/05 22:05:29 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/11/05 23:48:25 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ public:
 	int				getAlive();
 //	int				getX();
 //	int				getY();
-//	std::string		getName();
+	std::string		getName();
 };
 
 class	PlayerVec : public std::vector<Player>

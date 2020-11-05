@@ -6,7 +6,7 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 00:54:59 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/11/05 05:04:26 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/11/06 00:16:30 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,12 @@ public:
 class	GameState : public std::vector< std::vector<int> >
 {
 private:
-	int				x, y, action;
+	int				x, y, action, id;
 	PlayersState	lifes;
 
 public:
 	GameState(int n);
+	~GameState();
 	GameState(char **argv);
 	int				GetMyHP();
 	int				GetMyY();

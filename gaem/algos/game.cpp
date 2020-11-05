@@ -25,10 +25,11 @@ GameState::GameState(char **argv)
 {
 	const int				m = atoi(argv[1]);
 	const int				n = atoi(argv[2]);
-	const int				id = atoi(argv[3]);
 	std::ifstream			mapstate(GAMEMAP); //tmp map_file name
 	PlayersState			lifes;
 
+	srand(time(NULL)); // for random algos to work
+	id = atoi(argv[3]);
 	lifes.init(atoi(argv[4]));
 	this->resize(n, std::vector<int>(m));
 	action = 0;
@@ -114,4 +115,14 @@ void	GameState::ShootLeft()
 void	GameState::ShootRight()
 {
 	action = 8;
+}
+
+GameState::~GameState()
+{
+	std::string		filename(STEPFILE);
+	std::ofstream	file_out;
+
+	file_out.open(filename, std::ios_base::app);
+	file_out << id << ' ' << action << '\n';
+	file_out.close();
 }

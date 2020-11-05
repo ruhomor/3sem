@@ -13,28 +13,31 @@ Player::Player(std::string aName, int iid, int hhp)
 	std::cout << "newPlayer! id: " << id << " name: " << algoName << " hp: " << hp <<'\n';
 }
 
-int		Player::getId()
+int				Player::getId()
 {
 	return (id);
 }
 
-int		Player::getHP()
+int				Player::getHP()
 {
 	return (hp);
 }
-
-int		Player::getAlive()
+int				Player::getAlive()
 {
 	return (isAlive);
 }
 
-int		Player::getAction(std::string algoFolder,
+std::string		Player::getName()
+{
+	return (algoName);
+}
+
+int				Player::getAction(std::string algoFolder,
 		int alivePlayers, int maxX, int maxY)
 {
 	std::string		cmd = algoFolder + '/' + algoName + EXTENSION
 		+ ' ' + std::to_string(maxX) + ' ' + std::to_string(maxY) + ' '
-		+ std::to_string(id) + ' ' + std::to_string(alivePlayers) + ' ' //max_x max_y id num_of_players
-		+ '>' + "tmp.txt";
+		+ std::to_string(id) + ' ' + std::to_string(alivePlayers); //max_x max_y id num_of_players
 	std::cout << cmd << '\n'; //debug
 	std::system(cmd.c_str());
 
@@ -42,7 +45,7 @@ int		Player::getAction(std::string algoFolder,
 	return (hp);
 }
 
-void	PlayerVec::writeToFile(std::string algoFolder)
+void			PlayerVec::writeToFile(std::string algoFolder)
 {
 	std::ofstream	fael(PLAYERS);
 
@@ -57,7 +60,7 @@ void	PlayerVec::writeToFile(std::string algoFolder)
 		std::cout << "Unable to open file\n";
 }
 
-int		PlayerVec::getAlivePlayersNum()
+int				PlayerVec::getAlivePlayersNum()
 {
 	int		count = 0;
 

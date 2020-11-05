@@ -67,10 +67,13 @@ int		main(int argc, char **argv) //TODO map size x[2] y[3] algofolder [1]
 	playersTable.writeToFile(argv[1]);
 	//TODO write getAction which will get action from binaries
 	int		alivePlayers = playersTable.getAlivePlayersNum();
-	for(int i = 1; i < playersTable.size(); i++)
+	for(int i = 0; i < playersTable.size(); i++) //1 to skip no_algo
 	{
+		std::cout << i << '\n';
+		std::cout << "getting action for:" + playersTable[i].getName() + '\n';
 		playersTable[i].getAction(argv[1], alivePlayers, m, n);
 	}
+	std::cout << "TableSize: " << playersTable.size() << '\n';
 	//TODO write move step
 
 	//TODO write shoot step

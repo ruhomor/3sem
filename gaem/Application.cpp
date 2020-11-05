@@ -20,6 +20,7 @@ int		main(int argc, char **argv) //TODO map size x[2] y[3] algofolder [1]
 {
 	GLFWwindow*		window;
 	Map				gameMap;
+	int				m = MAPX, n = MAPY;
 
 	/* reading algorithms to playerTable */
 	PlayerVec		playersTable(argv[1]);
@@ -29,7 +30,8 @@ int		main(int argc, char **argv) //TODO map size x[2] y[3] algofolder [1]
 	{
 		if (argc == 4)
 		{
-			int		m = atoi(argv[2]), n = atoi(argv[3]);
+			m = atoi(argv[2]);
+			n = atoi(argv[3]);
 			gameMap.resize(n, std::vector<int>(m));
 			gameMap.setInit();
 		}
@@ -59,16 +61,15 @@ int		main(int argc, char **argv) //TODO map size x[2] y[3] algofolder [1]
 
 	//TODO write game step
 	/* game step */
-	//TODO write map to file map.txt
+	//DONE write map to file map.txt
 	gameMap.writeToFile(argv[1]);
-	//TODO write playerinfo to file players.txt
+	//DONE write playerinfo to file players.txt
 	playersTable.writeToFile(argv[1]);
 	//TODO write getAction which will get action from binaries
-	std::cout << "coco" << '\n';
-	for(int i = 0; i < playersTable.size(); i++)
+	int		alivePlayers = playersTable.getAlivePlayersNum();
+	for(int i = 1; i < playersTable.size(); i++)
 	{
-		std::cout << "coco" << '\n';
-		playersTable[i].getAction(argv[1]);
+		playersTable[i].getAction(argv[1], alivePlayers, m, n);
 	}
 	//TODO write move step
 

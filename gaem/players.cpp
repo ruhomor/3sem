@@ -23,9 +23,18 @@ int		Player::getHP()
 	return (hp);
 }
 
-int		Player::getAction(std::string algoFolder)
+int		Player::getAlive()
 {
-	std::string		cmd = algoFolder + '/' + algoName + EXTENSION + ">tmp.txt";
+	return (isAlive);
+}
+
+int		Player::getAction(std::string algoFolder,
+		int alivePlayers, int maxX, int maxY)
+{
+	std::string		cmd = algoFolder + '/' + algoName + EXTENSION
+		+ ' ' + itoa(maxX) + ' ' + itoa(maxY) + ' '
+		+ itoa(id) + ' ' + itoa(alivePlayers) + ' ' //max_x max_y id num_of_players
+		+ '>' + "tmp.txt";
 	std::cout << cmd << '\n'; //debug
 	std::system(cmd.c_str());
 
@@ -35,7 +44,7 @@ int		Player::getAction(std::string algoFolder)
 
 void	PlayerVec::writeToFile(std::string algoFolder)
 {
-	std::ofstream	fael(algoFolder + '/' + PLAYERS);
+	std::ofstream	fael(PLAYERS);
 
 	std::cout << "HELLLLLOOOOO\n";
 	if (fael.is_open())
@@ -46,6 +55,15 @@ void	PlayerVec::writeToFile(std::string algoFolder)
 	}
 	else
 		std::cout << "Unable to open file\n";
+}
+
+int		PlayerVec::getAlivePlayersNum()
+{
+	int		count = 0;
+
+	for (int i = 0; i < (*this).size(); i++)
+		if ((*this)[i].getAlive())
+			count++;
 }
 
 PlayerVec::PlayerVec(std::string algoFolder)

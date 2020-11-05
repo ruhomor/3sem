@@ -25,7 +25,7 @@ void	Map::display()
 
 void	Map::writeToFile(std::string algoFolder)
 {
-	std::ofstream	fael(algoFolder + '/' + GAMEMAP);
+	std::ofstream	fael(GAMEMAP);
 
 	if (fael.is_open())
 	{

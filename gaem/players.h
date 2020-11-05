@@ -6,7 +6,7 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 15:52:12 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/11/05 05:41:33 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/11/05 16:55:26 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 # define PLAYERS_H
 # include <string>
+# include <stdlib.h> // for itoa???
 /* for reading filenames */
 # include <fstream>
 # include <iostream>
@@ -33,7 +34,8 @@ public:
 	Player(std::string aName, int iid, int hhp);
 	int				getId();
 	int				getHP();
-	int				getAction(std::string algoFolder);
+	int				getAction(std::string algoFolder,
+			int alivePlayers, int maxX, int maxY);
 //	int				getX();
 //	int				getY();
 //	std::string		getName();
@@ -44,6 +46,7 @@ class	PlayerVec : public std::vector<Player>
 public:
 	PlayerVec(std::string algofolder);
 	void	writeToFile(std::string algoFolder);
+	int		getAlivePlayersNum();
 };
 
 #endif

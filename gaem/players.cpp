@@ -22,7 +22,7 @@ int				Player::getHP()
 {
 	return (hp);
 }
-int				Player::getAlive()
+bool			Player::getAlive()
 {
 	return (isAlive);
 }
@@ -32,17 +32,43 @@ std::string		Player::getName()
 	return (algoName);
 }
 
-int				Player::getAction(std::string algoFolder,
+int				Player::getAction()
+{
+	return (action);
+}
+
+void			Player::updatePos(std::pair<int, int> coords)
+{
+	x = coords.first;
+	y = coords.second;
+}
+
+void			Player::getNewAction(std::string algoFolder,
 		int alivePlayers, int maxX, int maxY)
 {
-	std::string		cmd = algoFolder + '/' + algoName + EXTENSION
+	std::string			cmd = algoFolder + '/' + algoName + EXTENSION
 		+ ' ' + std::to_string(maxX) + ' ' + std::to_string(maxY) + ' '
 		+ std::to_string(id) + ' ' + std::to_string(alivePlayers); //max_x max_y id num_of_players
+	action = 0;
+
 	std::cout << cmd << '\n'; //debug
 	std::system(cmd.c_str());
+	//std::cout << std::ifstream("tmp.txt").rdbuf() << '\n'; //debug
+	std::ifstream		stepfile(STEPFILE);
+	if (stepfile.is_open())
+	{
+		int		tmpId;
 
-	std::cout << std::ifstream("tmp.txt").rdbuf() << '\n'; //debug
-	return (hp);
+		stepfile >> tmpId >> action;
+		if (tmpId != id)
+		{
+			action = 0;
+			std::cout << "failed to get action from: " << algoName << '\n';
+		}
+		std::remove(STEPFILE);
+	}
+	else
+		std::cout << "failed to open STEPFILE for: " << algoName << '\n';
 }
 
 void			PlayerVec::writeToFile(std::string algoFolder)
@@ -58,6 +84,25 @@ void			PlayerVec::writeToFile(std::string algoFolder)
 	}
 	else
 		std::cout << "Unable to open file\n";
+}
+
+void			PlayerVec::decreaseHealth(int id)
+{
+	(*this)[id].decreaseHealth();
+}
+
+bool			Player::getDied()
+{
+	return (died);
+}
+
+void			Player::decreaseHealth()
+{
+	if (hp > 0)
+		hp--;
+	if ((hp == 0) && (isAlive == true))
+		isAlive = false;
+	died = true;
 }
 
 int				PlayerVec::getAlivePlayersNum()

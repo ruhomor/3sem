@@ -6,7 +6,7 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 00:55:17 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/11/06 00:14:25 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/11/06 04:11:34 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,15 @@
 # define PLAYERS "players.txt"
 # define GAMEMAP "map.txt"
 # define STEPFILE "tmp.txt"
+
+# define MOVE_UP 1
+# define MOVE_DOWN 2
+# define MOVE_LEFT 3
+# define MOVE_RIGHT 4
+
+# define SHOOT_UP 5
+# define SHOOT_DOWN 6
+# define SHOOT_LEFT 7
+# define SHOOT_RIGHT 8
 
 #endif

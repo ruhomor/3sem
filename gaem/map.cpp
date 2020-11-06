@@ -13,7 +13,7 @@ Map::Map() //Matrix[n][m]
 	init = false;
 }
 
-void	Map::display()
+void					Map::display()
 {
 	for (int i = 0; i < (*this).size(); i++)
 	{
@@ -23,7 +23,7 @@ void	Map::display()
 	}
 }
 
-void	Map::writeToFile(std::string algoFolder)
+void					Map::writeToFile(std::string algoFolder)
 {
 	std::ofstream	fael(GAMEMAP);
 
@@ -41,7 +41,25 @@ void	Map::writeToFile(std::string algoFolder)
 		std::cout << "Unable to open file\n";
 }
 
-void	Map::randPlace(int id)
+std::pair<int, int>		Map::findPos(int id)
+{
+	std::pair<int, int>		coords;
+
+	for (int i = 0; i < (*this).size(); i++)
+	{
+		for (int j = 0; j < (*this)[i].size(); j++)
+		{
+			if ((*this)[i][j] == id)
+			{
+				coords.first = j; //x
+				coords.second = i; //y
+			}
+		}
+	}
+	return (coords);
+}
+
+void					Map::randPlace(int id)
 {
 	int		x, y;
 
@@ -59,12 +77,81 @@ void	Map::randPlace(int id)
 	(*this)[y][x] = id;
 }
 
-bool	Map::isInit()
+std::pair<int, int>		Map::move(int id, int action)
+{
+	std::pair<int, int>		coords;
+	std::pair<int, int>		newCoords;
+
+	coords = (*this).findPos(id);
+	switch (action)
+	{
+		case MOVE_UP :
+			newCoords.second--; //move up is to decrease coord
+			break;
+		case MOVE_DOWN :
+			newCoords.second++; //move down is to increase coord
+			break;
+		case MOVE_LEFT :
+			newCoords.first--;
+			break;
+		case MOVE_RIGHT :
+			newCoords.first++;
+			break;
+		default:
+			break;
+	}
+	if ((newCoords.first < 0) || (newCoords.first >= (*this)[0].size())
+			|| ((*this)[newCoords.second][newCoords.first] != 0))
+		return (coords);
+	if ((newCoords.second < 0) || (newCoords.second >= (*this).size()))
+		return (coords);
+	(*this)[coords.second][coords.first] = 0;
+	(*this)[newCoords.second][newCoords.first] = id;
+	return (newCoords);
+}
+
+int						Map::shoot(int id, int action)
+{
+	std::pair<int, int>		coords;
+	int						hitId;
+	//std::pair<int, int>		hitCoords;
+
+	coords = (*this).findPos(id);
+	switch (action)
+	{
+		case SHOOT_UP :
+			for (int i = coords.second - 1; i >= 0; i--)
+				if ((*this)[i][coords.first] != 0)
+					return ((*this)[i][coords.first]);
+			break;
+		case SHOOT_DOWN :
+			for (int i = coords.second + 1; i < (*this).size(); i++) //shoot up is to increase coord
+				if ((*this)[i][coords.first] != 0)
+					return ((*this)[i][coords.first]);
+			break;
+		case SHOOT_LEFT :
+			for (int i = coords.first - 1; i >= 0; i--)
+				if ((*this)[coords.second][i] != 0)
+					return ((*this)[coords.second][i]);
+			break;
+		case SHOOT_RIGHT :
+			for (int i = coords.first + 1;
+					i < (*this)[coords.second].size(); i++)
+				if ((*this)[coords.second][i] != 0)
+					return ((*this)[coords.second][i]);
+			break;
+		default:
+			break;
+	}
+	return (-1); //ray animation???
+}
+
+bool					Map::isInit()
 {
 	return (init);
 }
 
-void	Map::setInit()
+void					Map::setInit()
 {
 	init = true;
 }

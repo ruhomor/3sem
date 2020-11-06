@@ -6,6 +6,7 @@ Player::Player(std::string aName, int iid, int hhp)
 	algoName = aName;
 	id = iid;
 	hp = hhp;
+	died = false;
 	if (hp > 0)
 		isAlive = true;
 	else

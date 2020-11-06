@@ -61,51 +61,56 @@ int		main(int argc, char **argv) //TODO map size x[2] y[3] algofolder [1]
 
 	//DONE write game step
 	/* game step */
-	//DONE write map to file map.txt
-	gameMap.writeToFile(argv[1]);
-	//DONE write playerinfo to file players.txt
-	playersTable.writeToFile(argv[1]);
-	//DONE write getNewAction which will get action from binaries
-	int		alivePlayers = playersTable.getAlivePlayersNum();
-	int		tmpAction;
-	for (int i = 0; i < playersTable.size(); i++) //1 to skip no_algo
+	for (int j = 0; j < 5; j++)
 	{
-		tmpAction = 0;
-		std::cout << i << '\n';
-		if (playersTable[i].getAlive() == true)
+		std::cout << "STEP" << j << '\n';
+		gameMap.display();
+		//DONE write map to file map.txt
+		gameMap.writeToFile(argv[1]);
+		//DONE write playerinfo to file players.txt
+		playersTable.writeToFile(argv[1]);
+		//DONE write getNewAction which will get action from binaries
+		int		alivePlayers = playersTable.getAlivePlayersNum();
+		int		tmpAction;
+		for (int i = 0; i < playersTable.size(); i++) //1 to skip no_algo
 		{
-			std::cout << "getting action for: " + playersTable[i].getName() + '\n';
-			playersTable[i].getNewAction(argv[1], alivePlayers, m, n);
-			tmpAction = playersTable[i].getAction();
-			if ((tmpAction > 0) && (tmpAction < 5)) //0 1 2 3 4 are MOVE_UP MOVE_DOWN etc
-				playersTable[i].updatePos(gameMap.move(playersTable[i].getId(), tmpAction));
+			tmpAction = 0;
+			//std::cout << i << '\n';
+			if (playersTable[i].getAlive() == true)
+			{
+				//std::cout << "getting action for: " + playersTable[i].getName() + '\n';
+				playersTable[i].getNewAction(argv[1], alivePlayers, m, n);
+				tmpAction = playersTable[i].getAction();
+				std::cout << "ACTION: " << tmpAction << '\n';
+				if ((tmpAction > 0) && (tmpAction < 5)) //0 1 2 3 4 are MOVE_UP MOVE_DOWN etc
+					playersTable[i].updatePos(gameMap.move(playersTable[i].getId(), tmpAction));
+			}
 		}
-	}
-	//DONE write move step
-	std::cout << "TableSize: " << playersTable.size() << '\n';
-	for (int i = 0; i < playersTable.size(); i++)
-	{
-		if (playersTable[i].getAlive() == true)
+		//DONE write move step
+		//std::cout << "TableSize: " << playersTable.size() << '\n';
+		for (int i = 0; i < playersTable.size(); i++)
 		{
-			tmpAction = playersTable[i].getAction();
-			if ((tmpAction > 4) && (tmpAction < 9))
-				playersTable.decreaseHealth(gameMap.shoot(playersTable[i].getId(), tmpAction));
+			if (playersTable[i].getAlive() == true)
+			{
+				tmpAction = playersTable[i].getAction();
+				if ((tmpAction > 4) && (tmpAction < 9))
+					playersTable.decreaseHealth(gameMap.shoot(playersTable[i].getId(), tmpAction));
+			}
 		}
-	}
-	//DONE write shoot step
+		//DONE write shoot step
 
-	for (int i = 0; i < playersTable.size(); i++)
-	{
-		std::pair<int, int>		corpse;
-
-		if (playersTable[i].getDied())
+		for (int i = 0; i < playersTable.size(); i++)
 		{
-			corpse = gameMap.findPos(playersTable[i].getId());
-			gameMap[corpse.second][corpse.first] = 0;
+			std::pair<int, int>		corpse;
+
+			if (playersTable[i].getDied())
+			{
+				corpse = gameMap.findPos(playersTable[i].getId());
+				gameMap[corpse.second][corpse.first] = 0;
+			}
 		}
-	}
 	//DONE write remove dead people from map
-
+	}
 	/* Initialize the library */
 	if (!glfwInit())
 		return (-1);

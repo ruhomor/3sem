@@ -5,6 +5,7 @@ int									main(int argc, char **argv) // argv[1] - m argv[2] - n argv[3] - id 
 	GameState	map(argv);
 	int			action = rand() % 9;
 
+	srand (time(NULL));
 	switch (action)
 	{
 		case 1 :

@@ -61,7 +61,7 @@ int		main(int argc, char **argv) //TODO map size x[2] y[3] algofolder [1]
 
 	//DONE write game step
 	/* game step */
-	for (int j = 0; j < 150; j++)
+	for (int j = 0; j < 1; j++)
 	{
 		std::cout << "STEP" << j << '\n';
 		gameMap.display();
@@ -132,9 +132,55 @@ int		main(int argc, char **argv) //TODO map size x[2] y[3] algofolder [1]
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window))
 	{
+
 		/* Render here */
 		glClear(GL_COLOR_BUFFER_BIT);
 
+
+    //horizontal
+		/*glBegin(GL_LINES);
+		//horizontal
+		for (float i = -1.0f; i <=  limy - 1.0f; i += limy / n){
+        glVertex2f(-1.0f, i);
+        glVertex2f(limx - 1.0f, i);
+    }
+    //vertical
+    for (float i = -1.0f; i <= limx - 1.0f; i += limx / m){
+        glVertex2f(i, -1.0f);
+        glVertex2f(i, limy - 1.0f);
+    }
+    glEnd();  */
+
+		float		SidePx = std::min(WINX / m, WINY / n);
+		float		xPx = 2.0 / WINX * SidePx, yPx = 2.0 / WINY * SidePx;
+
+		glBegin(GL_LINES);
+		//horizontal
+		for (int i = 0; i <= n; i++)
+		{
+			float		start = -1.0f;
+
+			start += i * xPx;
+			glVertex2f(start, -1.0f);
+			glVertex2f(start, m * yPx);
+    }
+    //vertical
+    for (int i = 0; i <= m; i++)
+		{
+			float		start = -1.0f;
+
+			start += i * yPx;
+			glVertex2f(-1.0f, start);
+			glVertex2f(n * xPx, start);
+    }
+    glEnd();
+
+
+		/*glBegin(GL_TRIANGLES); //j
+		glVertex2f(1.0f, 1.0f);
+		glVertex2f(0.5f, 0.5f);
+		glVertex2f(0.5f, -0.5f);
+		glEnd();
 		/* Swap front and back buffers */
 		glfwSwapBuffers(window);
 

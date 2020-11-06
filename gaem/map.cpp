@@ -116,6 +116,7 @@ std::pair<int, int>		Map::move(int id, int action)
 	std::cout << "i am moving on map!!!\n";
 	(*this)[coords.second][coords.first] = 0;
 	(*this)[newCoords.second][newCoords.first] = id;
+	std::cout << "SETTING Y: " << newCoords.second << ", X: " << newCoords.first << "to ID: " << id << '\n';
 	return (newCoords);
 }
 

@@ -103,8 +103,10 @@ void			Player::decreaseHealth()
 	if (hp > 0)
 		hp--;
 	if ((hp == 0) && (isAlive))
+	{
 		isAlive = false;
-	died = true;
+		died = true;
+	}
 }
 
 int				PlayerVec::getAlivePlayersNum()

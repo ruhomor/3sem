@@ -151,27 +151,30 @@ int		main(int argc, char **argv) //TODO map size x[2] y[3] algofolder [1]
     }
     glEnd();  */
 
-		float		SidePx = std::min(WINX / m, WINY / n);
-		float		xPx = 2.0 / WINX * SidePx, yPx = 2.0 / WINY * SidePx;
+		float		SidePx = std::min(WINX / m, WINY / n); //Px
+		float		xPx = 2.0 / WINX * SidePx, yPx = 2.0 / WINY * SidePx; //Doli
+
 
 		glBegin(GL_LINES);
 		//horizontal
-		for (int i = 0; i <= n; i++)
-		{
-			float		start = -1.0f;
 
-			start += i * xPx;
-			glVertex2f(start, -1.0f);
-			glVertex2f(start, m * yPx);
-    }
-    //vertical
-    for (int i = 0; i <= m; i++)
+		for (int i = 0; i <= n; i++)
 		{
 			float		start = -1.0f;
 
 			start += i * yPx;
 			glVertex2f(-1.0f, start);
-			glVertex2f(n * xPx, start);
+			glVertex2f(m * xPx - 1.0f, start);
+    }
+
+    //vertical
+    for (int i = 0; i <= m; i++)
+		{
+			float		start = -1.0f;
+
+			start += i * xPx;
+			glVertex2f(start, -1.0f);
+			glVertex2f(start, n * yPx - 1.0f);
     }
     glEnd();
 

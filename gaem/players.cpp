@@ -42,6 +42,7 @@ void			Player::updatePos(std::pair<int, int> coords)
 {
 	x = coords.first;
 	y = coords.second;
+    std::cout << "updateed coords id, x, y: " << id << ' ' << x << ' ' << y << '\n';
 }
 
 void			Player::getNewAction(std::string algoFolder,
@@ -101,7 +102,7 @@ void			Player::decreaseHealth()
 {
 	if (hp > 0)
 		hp--;
-	if ((hp == 0) && (isAlive == true))
+	if ((hp == 0) && (isAlive))
 		isAlive = false;
 	died = true;
 }

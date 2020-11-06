@@ -83,6 +83,7 @@ std::pair<int, int>		Map::move(int id, int action)
 	std::pair<int, int>		newCoords;
 
 	coords = (*this).findPos(id);
+	newCoords = coords;
 	switch (action)
 	{
 		case MOVE_UP :
@@ -100,11 +101,19 @@ std::pair<int, int>		Map::move(int id, int action)
 		default:
 			break;
 	}
-	if ((newCoords.first < 0) || (newCoords.first >= (*this)[0].size())
-			|| ((*this)[newCoords.second][newCoords.first] != 0))
+	if ((newCoords.first < 0) || (newCoords.first >= (*this)[0].size()))
+	{
+		std::cout << "damnnn1111111nnn\n";
 		return (coords);
+	}
 	if ((newCoords.second < 0) || (newCoords.second >= (*this).size()))
+	{
+		std::cout << "damnnn1222222222nnn\n";
 		return (coords);
+	}
+	if ((*this)[newCoords.second][newCoords.first] != 0)
+		return (coords);
+	std::cout << "i am moving on map!!!\n";
 	(*this)[coords.second][coords.first] = 0;
 	(*this)[newCoords.second][newCoords.first] = id;
 	return (newCoords);

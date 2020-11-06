@@ -61,7 +61,7 @@ int		main(int argc, char **argv) //TODO map size x[2] y[3] algofolder [1]
 
 	//DONE write game step
 	/* game step */
-	for (int j = 0; j < 5; j++)
+	for (int j = 0; j < 150; j++)
 	{
 		std::cout << "STEP" << j << '\n';
 		gameMap.display();
@@ -76,7 +76,7 @@ int		main(int argc, char **argv) //TODO map size x[2] y[3] algofolder [1]
 		{
 			tmpAction = 0;
 			//std::cout << i << '\n';
-			if (playersTable[i].getAlive() == true)
+			if (playersTable[i].getAlive())
 			{
 				//std::cout << "getting action for: " + playersTable[i].getName() + '\n';
 				playersTable[i].getNewAction(argv[1], alivePlayers, m, n);
@@ -90,7 +90,7 @@ int		main(int argc, char **argv) //TODO map size x[2] y[3] algofolder [1]
 		//std::cout << "TableSize: " << playersTable.size() << '\n';
 		for (int i = 0; i < playersTable.size(); i++)
 		{
-			if (playersTable[i].getAlive() == true)
+			if (playersTable[i].getAlive())
 			{
 				tmpAction = playersTable[i].getAction();
 				if ((tmpAction > 4) && (tmpAction < 9))

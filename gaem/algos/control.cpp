@@ -10,28 +10,28 @@ int									main(int argc, char **argv) // argv[1] - m argv[2] - n argv[3] - id 
 	switch (action)
 	{
 		case 1 :
-			map.MoveLeft();
-			break;
-		case 2 :
-			map.MoveRight();
-			break;
-		case 3 :
 			map.MoveUp();
 			break;
-		case 4 :
+		case 2 :
 			map.MoveDown();
 			break;
+		case 3 :
+			map.MoveLeft();
+			break;
+		case 4 :
+			map.MoveRight();
+			break;
 		case 5 :
-			map.ShootLeft();
-			break;
-		case 6 :
-			map.ShootRight();
-			break;
-		case 7 :
 			map.ShootUp();
 			break;
-		case 8 :
+		case 6 :
 			map.ShootDown();
+			break;
+		case 7 :
+			map.ShootLeft();
+			break;
+		case 8 :
+			map.ShootRight();
 			break;
 		default :
 			break;

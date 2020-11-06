@@ -61,7 +61,7 @@ int		main(int argc, char **argv) //TODO map size x[2] y[3] algofolder [1]
 
 	//DONE write game step
 	/* game step */
-	for (int j = 0; j < 150; j++)
+	for (int j = 0; j < 20; j++)
 	{
 		std::cout << "STEP" << j << '\n';
 		gameMap.display();
@@ -80,6 +80,8 @@ int		main(int argc, char **argv) //TODO map size x[2] y[3] algofolder [1]
 			{
 				//std::cout << "getting action for: " + playersTable[i].getName() + '\n';
 				playersTable[i].getNewAction(argv[1], alivePlayers, m, n);
+				std::cout << "ALIVE PLAYERS NUMBER : " << alivePlayers << '\n';
+				std::cout << playersTable[i].getAlgoName() << '\n';
 				tmpAction = playersTable[i].getAction();
 				std::cout << "ACTION: " << tmpAction << '\n';
 				if ((tmpAction > 0) && (tmpAction < 5)) //0 1 2 3 4 are MOVE_UP MOVE_DOWN etc
@@ -107,6 +109,7 @@ int		main(int argc, char **argv) //TODO map size x[2] y[3] algofolder [1]
 			{
 				corpse = gameMap.findPos(playersTable[i].getId());
 				gameMap[corpse.second][corpse.first] = 0;
+				playersTable[i].setDied(false);
 			}
 		}
 	//DONE write remove dead people from map

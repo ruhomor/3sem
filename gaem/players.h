@@ -6,7 +6,7 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 15:52:12 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/11/06 04:53:01 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/11/06 18:32:30 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,14 @@ public:
 			int alivePlayers, int maxX, int maxY);
 	bool			getAlive();
 	bool			getDied();
+	std::string		getAlgoName();
 	int				getAction();
 //	int				getX();
 //	int				getY();
 	std::string		getName();
+	void			setY(int newY);
+	void			setX(int newX);
+	void			setDied(bool tmp);
 	void			decreaseHealth();
 	void			updatePos(std::pair<int, int> coords);
 };

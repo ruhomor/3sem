@@ -7,7 +7,7 @@
 # include <algorithm>
 # include <math.h>
 # include "color.h"
-# include <GLUT/glut.h>
+//# include <GLUT/glut.h>
 # include <string>
 
 //# define STEPS 30

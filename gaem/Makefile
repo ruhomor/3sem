@@ -37,12 +37,12 @@ CXXFLAGS = -std=c++17 -O3
 
 LDFLAGS="-L/usr/local/opt/freetype/lib"
 
-#LENUX = -lGL -lGLU -lglfw -lX11 -lXrandr -lpthread -ldl -lstdc++fs
-FRAMEWORKS = -lglfw -lglew -framework Cocoa -framework OpenGL -framework IOKit -framework CoreVideo -framework GLUT
+LENUX = -lGL -lGLU -lglfw -lX11 -lXrandr -lpthread -ldl -lstdc++fs
+#FRAMEWORKS = -lglfw -lglew -framework Cocoa -framework OpenGL -framework IOKit -framework CoreVideo -framework GLUT
 
 $(NAME): $(OBJS) $(NAME).o $(GROBJ)
 	@make --ignore-errors -C $(ALGOFOLDER)
-	$(CXX) $(NAME).o $(OBJS) $(GROBJ) $(CXXFLAGS) $(FRAMEWORKS) -o $(NAME)
+	$(CXX) $(NAME).o $(OBJS) $(GROBJ) $(CXXFLAGS) $(LENUX) -o $(NAME)
 
 $(NAME).o: $(INC)
 	$(CXX) $(CXXFLAGS) $(NAME).cpp -c

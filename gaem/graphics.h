@@ -6,9 +6,10 @@
 # include <algorithm>
 # include <math.h>
 
-# define STEPS 30
-# define ANGLE 3.1415926 * 2.f / 30 //STEPS
+//# define STEPS 30
+//# define ANGLE 3.1415926 * 2.f / 30 //STEPS
+# define DEG2RAD 3.14159/180.0
 
-void DrawCircle(float x, float y, float r);
+void	DrawEllipse(float radiusX, float radiusY, float x, float y);
 
 #endif

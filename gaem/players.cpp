@@ -15,54 +15,73 @@ Player::Player(std::string aName, int iid, int hhp)
 	std::cout << "newPlayer! id: " << id << " name: " << algoName << " hp: " << hp <<'\n';
 }
 
-void			Player::plusScore(int bal)
+void					Player::plusScore(int bal)
 {
 	score += bal;
 }
 
-int				Player::getScore()
+std::pair<int, int>		Player::getPos()
+{
+	std::pair<int, int>		coords;
+
+	coords.first = x;
+	coords.second = y;
+	return (coords);
+}
+
+int						Player::getScore()
 {
 	return (score);
 }
 
-int				Player::getId()
+int						Player::getId()
 {
 	return (id);
 }
 
-int				Player::getHP()
+int						Player::getX()
+{
+	return (x);
+}
+
+int						Player::getY()
+{
+	return (y);
+}
+
+int						Player::getHP()
 {
 	return (hp);
 }
-bool			Player::getAlive()
+bool					Player::getAlive()
 {
 	return (isAlive);
 }
 
-std::string		Player::getName()
+std::string				Player::getName()
 {
 	return (algoName);
 }
 
-int				Player::getAction()
+int						Player::getAction()
 {
 	return (action);
 }
 
-std::string		Player::getAlgoName()
+std::string				Player::getAlgoName()
 {
 	return (algoName);
 }
 
-void			Player::updatePos(std::pair<int, int> coords)
+void					Player::updatePos(std::pair<int, int> coords)
 {
 	x = coords.first;
 	y = coords.second;
     std::cout << "updateed coords id, x, y: " << id << ' ' << x << ' ' << y << '\n';
 }
 
-void			Player::getNewAction(std::string algoFolder,
-		int alivePlayers, int maxX, int maxY)
+void					Player::getNewAction(std::string algoFolder,
+		int alivePlayers , int maxX, int maxY)
 {
 	std::string			cmd = algoFolder + '/' + algoName + EXTENSION
 		+ ' ' + std::to_string(maxX) + ' ' + std::to_string(maxY) + ' '
@@ -89,7 +108,7 @@ void			Player::getNewAction(std::string algoFolder,
 		std::cout << "failed to open STEPFILE for: " << algoName << '\n';
 }
 
-void			PlayerVec::writeToFile(std::string algoFolder)
+void					PlayerVec::writeToFile(std::string algoFolder)
 {
 	std::ofstream	fael(PLAYERS);
 
@@ -104,17 +123,17 @@ void			PlayerVec::writeToFile(std::string algoFolder)
 		std::cout << "Unable to open file\n";
 }
 
-void			PlayerVec::decreaseHealth(int id)
+void					PlayerVec::decreaseHealth(int id)
 {
 	(*this)[id].decreaseHealth();
 }
 
-bool			Player::getDied()
+bool					Player::getDied()
 {
 	return (died);
 }
 
-void			Player::decreaseHealth()
+void					Player::decreaseHealth()
 {
 	if (hp > 0)
 		hp--;
@@ -125,7 +144,7 @@ void			Player::decreaseHealth()
 	}
 }
 
-int				PlayerVec::getAlivePlayersNum()
+int						PlayerVec::getAlivePlayersNum()
 {
 	int		count = 0;
 
@@ -135,17 +154,17 @@ int				PlayerVec::getAlivePlayersNum()
 	return (count);
 }
 
-void			Player::setDied(bool tmp)
+void					Player::setDied(bool tmp)
 {
 	died = tmp;
 }
 
-void			Player::setX(int newX)
+void					Player::setX(int newX)
 {
 	x = newX;
 }
 
-void			Player::setY(int newY)
+void					Player::setY(int newY)
 {
 	y = newY;
 }

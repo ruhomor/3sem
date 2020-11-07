@@ -6,7 +6,7 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 15:52:12 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/11/07 03:30:01 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/11/07 05:15:10 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,29 +27,30 @@ namespace fs = std::experimental::filesystem;
 class	Player
 {
 private:
-	std::string		algoName;
-	int				id, hp, x, y, action, score;
-	bool			isAlive, died;
+	std::string				algoName;
+	int						id, hp, x, y, action, score;
+	bool					isAlive, died;
 public:
 	Player(std::string aName, int iid, int hhp);
-	int				getId();
-	int				getHP();
-	void			getNewAction(std::string algoFolder,
+	int						getId();
+	int						getHP();
+	void					getNewAction(std::string algoFolder,
 			int alivePlayers, int maxX, int maxY);
-	bool			getAlive();
-	void			plusScore(int bal);
-	bool			getDied();
-	int				getScore();
-	std::string		getAlgoName();
-	int				getAction();
-//	int				getX();
-//	int				getY();
-	std::string		getName();
-	void			setY(int newY);
-	void			setX(int newX);
-	void			setDied(bool tmp);
-	void			decreaseHealth();
-	void			updatePos(std::pair<int, int> coords);
+	bool					getAlive();
+	void					plusScore(int bal);
+	bool					getDied();
+	int						getScore();
+	std::string				getAlgoName();
+	std::pair<int, int>		getPos();
+	int						getAction();
+	int						getX();
+	int						getY();
+	std::string				getName();
+	void					setY(int newY);
+	void					setX(int newX);
+	void					setDied(bool tmp);
+	void					decreaseHealth();
+	void					updatePos(std::pair<int, int> coords);
 };
 
 class	PlayerVec : public std::vector<Player>

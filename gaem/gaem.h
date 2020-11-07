@@ -16,9 +16,9 @@
 
 # include "players.h"
 # include "map.h"
+# include "graphics.h"
 # include <GLFW/glfw3.h>
 # include <tuple>
-# include <algorithm> // for graphics std::min
 # define WINX 640
 # define WINY 480
 # define MAPX 4

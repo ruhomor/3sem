@@ -137,20 +137,6 @@ int		main(int argc, char **argv) //TODO map size x[2] y[3] algofolder [1]
 		glClear(GL_COLOR_BUFFER_BIT);
 
 
-    //horizontal
-		/*glBegin(GL_LINES);
-		//horizontal
-		for (float i = -1.0f; i <=  limy - 1.0f; i += limy / n){
-        glVertex2f(-1.0f, i);
-        glVertex2f(limx - 1.0f, i);
-    }
-    //vertical
-    for (float i = -1.0f; i <= limx - 1.0f; i += limx / m){
-        glVertex2f(i, -1.0f);
-        glVertex2f(i, limy - 1.0f);
-    }
-    glEnd();  */
-
 		float		SidePx = std::min(WINX / m, WINY / n); //Px
 		float		xPx = 2.0 / WINX * SidePx, yPx = 2.0 / WINY * SidePx; //Doli
 
@@ -178,12 +164,23 @@ int		main(int argc, char **argv) //TODO map size x[2] y[3] algofolder [1]
     }
     glEnd();
 
+		//Draw players
+		for (int i = 0; i < 1 /*playersTable.size()*/; i++) //1 to skip no_algo
+		{
+			int x = playersTable[i].getX();
+			int y = playersTable[i].getY();
 
-		/*glBegin(GL_TRIANGLES); //j
-		glVertex2f(1.0f, 1.0f);
-		glVertex2f(0.5f, 0.5f);
-		glVertex2f(0.5f, -0.5f);
-		glEnd();
+			float xPos = (2 * x + 1) / 2 * xPx - 1.0f;
+			float yPos = (2 * (n - y) - 1) / 2 * yPx - 1.0f;
+			float r = xPx / 2;
+
+			printf("%f - x, %f - y\n", xPos, yPos);
+
+			DrawCircle(xPos, yPos, r);
+
+		}
+
+
 		/* Swap front and back buffers */
 		glfwSwapBuffers(window);
 

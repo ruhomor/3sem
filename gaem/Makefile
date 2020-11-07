@@ -19,6 +19,12 @@ NAME = Application
 SRCS = map \
 	   players
 
+GRSRCS = graphics
+
+GRHEADERS = $(patsubst %, %.h, $(GRSRCS))
+
+GROBJ = $(patsubst %, %.o, $(GRSRCS))
+
 HEADERS = $(patsubst %, %.h, $(SRCS))
 
 INC = gaem.h
@@ -31,14 +37,17 @@ CXXFLAGS = -std=c++17 -O3
 
 LENUX = -lGL -lGLU -lglfw -lX11 -lXrandr -lpthread -ldl -lstdc++fs
 
-$(NAME): $(OBJS) $(NAME).o
+$(NAME): $(OBJS) $(NAME).o $(GROBJ)
 	@make --ignore-errors -C $(ALGOFOLDER)
-	$(CXX) $(NAME).o $(OBJS) $(CXXFLAGS) $(LENUX) -o $(NAME)
+	$(CXX) $(NAME).o $(OBJS) $(GROBJ) $(CXXFLAGS) $(LENUX) -o $(NAME)
 
 $(NAME).o: $(INC)
 	$(CXX) $(CXXFLAGS) $(NAME).cpp -c
 
 $(OBJS): $(HEADERS)
+
+$(GROBJ): $(GRHEADERS)
+	$(CXX) $(LENUX) $(CXXFLAGS) $(@:%.o=%.cpp) -c
 
 $(NAME).cpp: $(INC)
 

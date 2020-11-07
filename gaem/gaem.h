@@ -6,7 +6,7 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 12:19:49 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/11/07 07:21:35 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/11/07 09:52:35 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include "graphics.h"
 # include <GLFW/glfw3.h>
 //# include <GLUT/glut.h>
+
 # include <tuple>
 # define WINX 640
 # define WINY 480

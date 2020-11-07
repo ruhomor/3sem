@@ -6,7 +6,7 @@
 #    By: kachiote <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/03 14:53:22 by kachiote          #+#    #+#              #
-#    Updated: 2020/11/07 07:21:21 by Ruslan           ###   ########.fr        #
+#    Updated: 2020/11/07 09:52:53 by Ruslan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ CXXFILES = $(patsubst %, %.cpp, $(SRCS))
 CXXFLAGS = -std=c++17 -O3
 
 #LENUX = -lGL -lGLU -lglfw -lX11 -lXrandr -lpthread -ldl -lstdc++fs
-FRAMEWORKS = -lglfw -lglew -framework Cocoa -framework OpenGL -framework IOKit -framework CoreVideo #-framework GLUT
+FRAMEWORKS = -lglfw -lglew -framework Cocoa -framework OpenGL -framework IOKit -framework CoreVideo -framework GLUT
 
 $(NAME): $(OBJS) $(NAME).o $(GROBJ)
 	@make --ignore-errors -C $(ALGOFOLDER)

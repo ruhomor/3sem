@@ -16,3 +16,16 @@ void	DrawEllipse(float radiusX, float radiusY, float x, float y, Color c)
 	}
 	glEnd();
 }
+/*
+void	output(int x, int y, Color c, int font, std::string s)
+{
+	glColor3f(c.r, c.g, c.b);
+	glRasterPos2f(x, y);
+	int len, i;
+	len = (int)strlen(s);
+	for (i = 0; i < len; i++)
+	{
+		glutBitmapCharacter(font, s[i]);
+	}
+}
+*/

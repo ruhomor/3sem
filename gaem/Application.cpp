@@ -204,10 +204,25 @@ int		main(int argc, char **argv) //TODO map size x[2] y[3] algofolder [1]
 			coords.second = n - coords.second - 1;
 			std::cout << "x: " << coords.first << "y: " << coords.second << '\n';
 			if (playersTable[i].getAlive())
+			{
 				DrawEllipse(xPx / 2, yPx / 2,
 						xPx * coords.first + xPx / 2,
 						yPx * coords.second + yPx / 2,
 						playersTable[i].getColor());
+				/*output(xPx / 2, yPx / 2,
+						(Color){.r = 0.0f, .g = 0.0f, .b = 0.0f},
+						,
+						std::to_string(playersTable[i].getHP()));*/
+				/*
+				glColor3f (1.0, 0.0, 0.0);
+				glRasterPos2f(0, 0); //define position on the screen
+				char *string = "Text";
+				while(*string)
+				{
+					glutBitmapCharacter(GLUT_BITMAP_8_BY_13, *string++);
+				}
+				*/
+			}
 		}
 		/* Swap front and back buffers */
 		glfwSwapBuffers(window);
@@ -215,7 +230,6 @@ int		main(int argc, char **argv) //TODO map size x[2] y[3] algofolder [1]
 		/* Poll for and process events */
 		glfwPollEvents();
 	}
-
 	glfwTerminate();
 	return 0;
 }

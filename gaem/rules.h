@@ -6,7 +6,7 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 00:55:17 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/11/06 04:11:34 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/11/07 02:51:35 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 # define PLAYERS "players.txt"
 # define GAMEMAP "map.txt"
 # define STEPFILE "tmp.txt"
+# define SHOTSCORE 100
+# define KILLSCORE 200
+# define ALIVESCORE 100
+# define ITERS 100
 
 # define MOVE_UP 1
 # define MOVE_DOWN 2

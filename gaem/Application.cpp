@@ -22,9 +22,6 @@ int		main(int argc, char **argv) //TODO map size x[2] y[3] algofolder [1]
 	Map				gameMap;
 	int				m = MAPX, n = MAPY;
 
-	/* reading algorithms to playerTable */
-	PlayerVec		playersTable(argv[1]);
-
 	/* reading map size from command line */
 	if (argc != 2)
 	{
@@ -42,6 +39,9 @@ int		main(int argc, char **argv) //TODO map size x[2] y[3] algofolder [1]
 			return (-2);
 		}
 	}
+
+	/* reading algorithms to playerTable */
+	PlayerVec		playersTable(argv[1]);
 
 	if (!(gameMap.isInit()))
 		gameMap.resize(MAPY, std::vector<int>(MAPX));
@@ -80,6 +80,8 @@ int		main(int argc, char **argv) //TODO map size x[2] y[3] algofolder [1]
 			{
 				//std::cout << "getting action for: " + playersTable[i].getName() + '\n';
 				playersTable[i].getNewAction(argv[1], alivePlayers, m, n);
+				std::cout << "ALIVE PLAYERS NUMBER : " << alivePlayers << '\n';
+				std::cout << playersTable[i].getAlgoName() << '\n';
 				tmpAction = playersTable[i].getAction();
 				std::cout << "ACTION: " << tmpAction << '\n';
 				if ((tmpAction > 0) && (tmpAction < 5)) //0 1 2 3 4 are MOVE_UP MOVE_DOWN etc
@@ -93,8 +95,23 @@ int		main(int argc, char **argv) //TODO map size x[2] y[3] algofolder [1]
 			if (playersTable[i].getAlive())
 			{
 				tmpAction = playersTable[i].getAction();
+				int		hitId = gameMap.shoot(playersTable[i].getId(), tmpAction);
 				if ((tmpAction > 4) && (tmpAction < 9))
-					playersTable.decreaseHealth(gameMap.shoot(playersTable[i].getId(), tmpAction));
+				{
+					playersTable.decreaseHealth(hitId);
+					if (playersTable[hitId].getDied())
+					{
+						playersTable[i].plusScore(KILLSCORE);
+						std::cout << playersTable[i].getAlgoName()
+							<< " killed " << playersTable[hitId].getAlgoName();
+					}
+					else
+					{
+						playersTable[i].plusScore(SHOTSCORE);
+						std::cout << playersTable[i].getAlgoName()
+							<< " hit " << playersTable[hitId].getAlgoName();
+					}
+				}
 			}
 		}
 		//DONE write shoot step
@@ -107,6 +124,7 @@ int		main(int argc, char **argv) //TODO map size x[2] y[3] algofolder [1]
 			{
 				corpse = gameMap.findPos(playersTable[i].getId());
 				gameMap[corpse.second][corpse.first] = 0;
+				playersTable[i].setDied(false);
 			}
 		}
 	//DONE write remove dead people from map

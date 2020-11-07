@@ -6,12 +6,23 @@ Player::Player(std::string aName, int iid, int hhp)
 	algoName = aName;
 	id = iid;
 	hp = hhp;
+	score = 0;
 	died = false;
 	if (hp > 0)
 		isAlive = true;
 	else
 		isAlive = false;
 	std::cout << "newPlayer! id: " << id << " name: " << algoName << " hp: " << hp <<'\n';
+}
+
+void			Player::plusScore(int bal)
+{
+	score += bal;
+}
+
+int				Player::getScore()
+{
+	return (score);
 }
 
 int				Player::getId()
@@ -36,6 +47,11 @@ std::string		Player::getName()
 int				Player::getAction()
 {
 	return (action);
+}
+
+std::string		Player::getAlgoName()
+{
+	return (algoName);
 }
 
 void			Player::updatePos(std::pair<int, int> coords)
@@ -119,10 +135,28 @@ int				PlayerVec::getAlivePlayersNum()
 	return (count);
 }
 
+void			Player::setDied(bool tmp)
+{
+	died = tmp;
+}
+
+void			Player::setX(int newX)
+{
+	x = newX;
+}
+
+void			Player::setY(int newY)
+{
+	y = newY;
+}
+
 PlayerVec::PlayerVec(std::string algoFolder)
 {
 	int				id = 1;
 	Player			zeroplayer("no_algo", 0, 0); //trashcoding
+
+	//zeroplayer.setX(-1); //trashcoding
+	//zeroplayer.setY(-1); //trashcoding
 
 	this->push_back(zeroplayer); //we dont need this but whatever
 	for(auto &p: fs::directory_iterator(algoFolder))

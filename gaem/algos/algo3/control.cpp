@@ -1,4 +1,4 @@
-#include "game.h"
+#include "../game.h"
 
 int									main(int argc, char **argv) // argv[1] - m argv[2] - n argv[3] - id argv[4]
 {

@@ -6,12 +6,23 @@ Player::Player(std::string aName, int iid, int hhp)
 	algoName = aName;
 	id = iid;
 	hp = hhp;
+	score = 0;
 	died = false;
 	if (hp > 0)
 		isAlive = true;
 	else
 		isAlive = false;
 	std::cout << "newPlayer! id: " << id << " name: " << algoName << " hp: " << hp <<'\n';
+}
+
+void			Player::plusScore(int bal)
+{
+	score += bal;
+}
+
+int				Player::getScore()
+{
+	return (score);
 }
 
 int				Player::getId()

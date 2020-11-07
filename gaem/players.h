@@ -6,7 +6,7 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 15:52:12 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/11/06 18:32:30 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/11/07 03:30:01 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class	Player
 {
 private:
 	std::string		algoName;
-	int				id, hp, x, y, action;
+	int				id, hp, x, y, action, score;
 	bool			isAlive, died;
 public:
 	Player(std::string aName, int iid, int hhp);
@@ -37,7 +37,9 @@ public:
 	void			getNewAction(std::string algoFolder,
 			int alivePlayers, int maxX, int maxY);
 	bool			getAlive();
+	void			plusScore(int bal);
 	bool			getDied();
+	int				getScore();
 	std::string		getAlgoName();
 	int				getAction();
 //	int				getX();

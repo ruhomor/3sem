@@ -3,6 +3,7 @@
 # define GRAPHICS_H
 
 # include <GLFW/glfw3.h>
+//# include <GLUT/glut.h>
 # include <algorithm>
 # include <math.h>
 # include "color.h"

@@ -134,9 +134,9 @@ int						Map::shoot(int id, int action)
 	switch (action)
 	{
 		case SHOOT_UP :
-			for (int i = coords.second - 1; i >= 0; i--)
-				if ((*this)[i][coords.first] != 0)
-					return ((*this)[i][coords.first]);
+				for (int i = coords.second - 1; i >= 0; i--)
+					if ((*this)[i][coords.first] != 0)
+						return ((*this)[i][coords.first]);
 			break;
 		case SHOOT_DOWN :
 			for (int i = coords.second + 1; i < (*this).size(); i++) //shoot up is to increase coord

@@ -55,17 +55,20 @@ static void		gameStep(Map &gameMap, char **argv, PlayerVec &playersTable, int &m
 			if ((tmpAction > 4) && (tmpAction < 9))
 			{
 				playersTable.decreaseHealth(hitId);
-				if (playersTable[hitId].getDied())
+				if (hitId > 0)
 				{
-					playersTable[i].plusScore(KILLSCORE);
-					std::cout << playersTable[i].getAlgoName()
-						<< " killed " << playersTable[hitId].getAlgoName();
-				}
-				else
-				{
-					playersTable[i].plusScore(SHOTSCORE);
-					std::cout << playersTable[i].getAlgoName()
-						<< " hit " << playersTable[hitId].getAlgoName();
+					if (playersTable[hitId].getDied())
+					{
+						playersTable[i].plusScore(KILLSCORE);
+						std::cout << playersTable[i].getAlgoName()
+							<< " killed " << playersTable[hitId].getAlgoName();
+					}
+					else
+					{
+						playersTable[i].plusScore(SHOTSCORE);
+						std::cout << playersTable[i].getAlgoName()
+							<< " hit " << playersTable[hitId].getAlgoName();
+					}
 				}
 			}
 		}

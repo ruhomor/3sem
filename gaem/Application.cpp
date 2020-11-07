@@ -122,9 +122,9 @@ int		main(int argc, char **argv) //TODO map size x[2] y[3] algofolder [1]
 	gameMap.display(); //debug
 
 	/* placing players on map */
-	for (int i = 0; i < playersTable.size(); i++)
+	for (int i = 1; i < playersTable.size(); i++)
 	{
-		gameMap.randPlace(playersTable[i].getId());
+		playersTable[i].updatePos(gameMap.randPlace(playersTable[i].getId()));
 		gameMap.display(); //debug
 	}
 
@@ -193,16 +193,18 @@ int		main(int argc, char **argv) //TODO map size x[2] y[3] algofolder [1]
 		gameStep(gameMap, argv, playersTable, m, n);
 
 		/* display on screen */
-		for (int i = 0; i < playersTable.size(); i++)
+		for (int i = 1; i < playersTable.size(); i++)
 		{
 			std::pair<int, int>		coords;
 
 			coords = playersTable[i].getPos();
 			coords.second = n - coords.second - 1;
 			std::cout << "x: " << coords.first << "y: " << coords.second << '\n';
-			DrawEllipse(xPx / 2, yPx / 2,
-					xPx * coords.first + xPx / 2,
-					yPx * coords.second + yPx / 2);
+			if (playersTable[i].getAlive())
+				DrawEllipse(xPx / 2, yPx / 2,
+						xPx * coords.first + xPx / 2,
+						yPx * coords.second + yPx / 2,
+						playersTable[i].getColor());
 		}
 		/* Swap front and back buffers */
 		glfwSwapBuffers(window);

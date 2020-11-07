@@ -59,9 +59,10 @@ std::pair<int, int>		Map::findPos(int id)
 	return (coords);
 }
 
-void					Map::randPlace(int id)
+std::pair<int, int>		Map::randPlace(int id) //TODO refactor
 {
-	int		x, y;
+	std::pair<int, int>		coords;
+	int						x, y;
 
 	y = rand() % (*this).size();
 	x = rand() % (*this)[0].size();
@@ -75,6 +76,9 @@ void					Map::randPlace(int id)
 			<< x << " y " << y << '\n';
 	}
 	(*this)[y][x] = id;
+	coords.first = x;
+	coords.second = y;
+	return (coords);
 }
 
 std::pair<int, int>		Map::move(int id, int action)

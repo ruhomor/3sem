@@ -6,7 +6,7 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 15:52:12 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/11/07 05:15:10 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/11/07 06:39:06 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <cstdio> //for file deletion
 # define EXTENSION ".player" //algo extension
 # define EXTLEN 7 //it's len
+# include "color.h"
 namespace fs = std::experimental::filesystem;
 
 class	Player
@@ -30,10 +31,12 @@ private:
 	std::string				algoName;
 	int						id, hp, x, y, action, score;
 	bool					isAlive, died;
+	Color					c;
 public:
 	Player(std::string aName, int iid, int hhp);
 	int						getId();
 	int						getHP();
+	Color					getColor();
 	void					getNewAction(std::string algoFolder,
 			int alivePlayers, int maxX, int maxY);
 	bool					getAlive();

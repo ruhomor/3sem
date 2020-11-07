@@ -6,7 +6,7 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 17:36:47 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/11/06 04:42:11 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/11/07 06:00:11 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ public:
 	void					setInit();
 	void					gameStep();
 	void					display();
-	void					randPlace(int id);
+	std::pair<int, int>		randPlace(int id); //TODO refactor
 	void					writeToFile(std::string algoFolder);
 	std::pair<int, int>		findPos(int id);
 	std::pair<int, int>		move(int id, int action);

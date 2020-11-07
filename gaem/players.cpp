@@ -6,7 +6,13 @@ Player::Player(std::string aName, int iid, int hhp)
 	algoName = aName;
 	id = iid;
 	hp = hhp;
-	score = 0;
+	score = 0; //not sure they are random and dont care
+	c.r = 0.5f + static_cast<float>(rand()) /
+		(static_cast<float>(RAND_MAX / (1.0f - 0.5f)));
+	c.g = 0.5f + static_cast<float>(rand()) /
+		(static_cast<float>(RAND_MAX / (1.0f - 0.5f)));
+	c.b = 0.5f + static_cast<float>(rand()) /
+		(static_cast<float>(RAND_MAX / (1.0f - 0.5f)));
 	died = false;
 	if (hp > 0)
 		isAlive = true;
@@ -18,6 +24,11 @@ Player::Player(std::string aName, int iid, int hhp)
 void					Player::plusScore(int bal)
 {
 	score += bal;
+}
+
+Color					Player::getColor()
+{
+	return (c);
 }
 
 std::pair<int, int>		Player::getPos()

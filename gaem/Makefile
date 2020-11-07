@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    Makefile 2                                         :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: kachiote <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/03 14:53:22 by kachiote          #+#    #+#              #
-#    Updated: 2020/11/05 02:15:27 by Ruslan           ###   ########.fr        #
+#    Updated: 2020/11/06 13:54:01 by Ruslan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,12 @@ NAME = Application
 SRCS = map \
 	   players
 
+GRSRCS = graphics
+
+GRHEADERS = $(patsubst %, %.h, $(GRSRCS))
+
+GROBJ = $(patsubst %, %.o, $(GRSRCS))
+
 HEADERS = $(patsubst %, %.h, $(SRCS))
 
 INC = gaem.h
@@ -29,16 +35,19 @@ CXXFILES = $(patsubst %, %.cpp, $(SRCS))
 
 CXXFLAGS = -std=c++17 -O3
 
-FRAMEWORKS = -lglfw -lglew -framework Cocoa -framework OpenGL -framework IOKit -framework CoreVideo
+LENUX = -lGL -lGLU -lglfw -lX11 -lXrandr -lpthread -ldl -lstdc++fs
 
-$(NAME): $(OBJS) $(NAME).o
+$(NAME): $(OBJS) $(NAME).o $(GROBJ)
 	@make --ignore-errors -C $(ALGOFOLDER)
-	$(CXX) $(CXXFLAGS) $(FRAMEWORKS) -o $(NAME) $(OBJS) $(NAME).o
+	$(CXX) $(NAME).o $(OBJS) $(GROBJ) $(CXXFLAGS) $(LENUX) -o $(NAME)
 
 $(NAME).o: $(INC)
 	$(CXX) $(CXXFLAGS) $(NAME).cpp -c
 
 $(OBJS): $(HEADERS)
+
+$(GROBJ): $(GRHEADERS)
+	$(CXX) $(LENUX) $(CXXFLAGS) $(@:%.o=%.cpp) -c
 
 $(NAME).cpp: $(INC)
 

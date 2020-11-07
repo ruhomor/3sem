@@ -16,6 +16,7 @@
 
 # include "players.h"
 # include "map.h"
+# include "graphics.h"
 # include <GLFW/glfw3.h>
 # include <tuple>
 # define WINX 640

@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   2.cpp                                              :+:      :+:    :+:   */
+/*   box.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/13 18:17:29 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/12/13 19:34:28 by Ruslan           ###   ########.fr       */
+/*   Created: 2020/12/13 19:16:03 by Ruslan            #+#    #+#             */
+/*   Updated: 2020/12/13 19:27:51 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "box.h"
-#include <iostream>
+#ifdef BOX_H
 
-template <typename T, typename... Ts>
-T* createObj(Ts... args)
-{
-	return (new T(args...));
-}
+# define BOX_H
+# include <iostream>
 
-int		main()
+class Box
 {
-	int *arr = createObj<int>(1);
-	std::cout << *arr << '\n';
-	//Box *mem = createObj<Box>(1, 2, 3);
-	return (0);
-}
+public:
+	Box(int xi, int yi, int zi);
+private:
+	double x, y, z;
+};
+
+#endif

@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   2.cpp                                              :+:      :+:    :+:   */
+/*   box.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/13 18:17:29 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/12/13 19:34:28 by Ruslan           ###   ########.fr       */
+/*   Created: 2020/12/13 19:16:48 by Ruslan            #+#    #+#             */
+/*   Updated: 2020/12/13 19:24:12 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "box.h"
-#include <iostream>
+#include "box.h"
 
-template <typename T, typename... Ts>
-T* createObj(Ts... args)
+Box::Box(int xi, int yi, int zi)
 {
-	return (new T(args...));
-}
-
-int		main()
-{
-	int *arr = createObj<int>(1);
-	std::cout << *arr << '\n';
-	//Box *mem = createObj<Box>(1, 2, 3);
-	return (0);
+	x = xi;
+	y = yi;
+	z = zi;
+	std::cout << x << y << z << '\n';
+	std::cout << "Я родился!\n";
 }

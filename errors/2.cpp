@@ -23,13 +23,12 @@ void	writeLetter(char a)
 			throw (SNEAKY_ERROR);
 		cout << a << endl;
 	}
-	catch (Result SURPRISED_ERROR)
+	catch (Result e)
 	{
-		cout << "It's not a letter!! It's another symbol! STILL!!!" << endl;
-	}
-	catch (Result SNEAKY_ERROR)
-	{
-		cout << "I don't like the letter Ss try another one!" << endl;
+		if (e == SURPRISED_ERROR)
+			cout << "It's not a letter!! It's another symbol! STILL!!!" << endl;
+		if (e == SNEAKY_ERROR)
+			cout << "I don't like the letter Ss try another one!" << endl;
 	}
 }
 /*
@@ -44,6 +43,6 @@ int		main()
 
 	writeLetter(c);
 	writeLetter('a');
-	writeLetter('\');
+	writeLetter('!');
 	return (NO_ERROR);
 }

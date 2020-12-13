@@ -6,11 +6,11 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/13 19:16:03 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/12/13 19:27:51 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/12/13 19:36:04 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifdef BOX_H
+#ifndef BOX_H
 
 # define BOX_H
 # include <iostream>

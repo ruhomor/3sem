@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   2.cpp                                              :+:      :+:    :+:   */
+/*   4.cpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/13 18:17:29 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/12/13 19:36:58 by Ruslan           ###   ########.fr       */
+/*   Created: 2020/12/13 20:08:24 by Ruslan            #+#    #+#             */
+/*   Updated: 2020/12/13 20:13:16 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "box.h"
+#include <iostream>
 
-template <typename T, typename... Ts>
-T* createObj(Ts... args)
+//с выражением свертки
+template <typename First, typename... Types>
+void	printWords(First mem, Types... args)
 {
-	return (new T(args...));
+	std::cout << mem;
+	printWords(args...);
+}
+
+void	printWords(void)
+{
+	return ;
 }
 
 int		main()
 {
-	int		*arr = createObj<int>(1);
-	std::cout << *arr << '\n';
-
-	Box *mem = createObj<Box>(1, 2, 3);
-
+	printWords("meme", "2", "keke", 3, 4);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: Ruslan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 01:53:50 by Ruslan            #+#    #+#             */
-/*   Updated: 2020/10/18 22:50:56 by Ruslan           ###   ########.fr       */
+/*   Updated: 2020/12/11 15:45:24 by Ruslan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,8 +178,6 @@ int		main()
 	tree.insert(14);
 	tree.insert(30);
 	tree.insert(9);
-	//tree.balance();
-//	printf("%d\n", tree.getRoot()->data);
 	tree.postOrderMap([](Node node){ std::cout << node->data << ' '; });
 	return (0);
 }
